@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView"
+            android:autoText="true"
+            android:background="@drawable/button_shape"
+            android:text="好家政"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="139dp">
+
+        <ImageView
+            android:src="@drawable/pic1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView6" />
+
+    </TableRow>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/register"
+            android:text="月嫂"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@color/transparent" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保姆"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@color/transparent" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="看护护理"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@color/transparent" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="家庭教育"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@color/transparent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清洁"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:textSize="20sp" />
+
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="维修"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:textSize="20sp" />
+
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="搬家"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:textSize="20sp" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="钟点工"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:layout_marginTop="15dp">
+        <Button android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="VIP服务"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="@color/transparent" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="优惠套餐"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="@color/transparent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_weight="0.31">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="金牌服务商推荐"
+            android:id="@+id/button10"
+            android:background="@color/transparent"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</LinearLayout>
