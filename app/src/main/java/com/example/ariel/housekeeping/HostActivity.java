@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 public class HostActivity extends Fragment {
 
     private int a;
-    private int b;
+
     //..
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
