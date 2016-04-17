@@ -10,6 +10,9 @@ import android.view.ViewGroup;
  * Created by ariel on 2016/4/14.
  */
 public class HostActivity extends Fragment {
+
+    private int a;
+    //..
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
