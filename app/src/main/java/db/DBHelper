@@ -2,7 +2,9 @@ package db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+/**
+ * Created by disagree on 2016/4/19.
+ */
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "test.db";
@@ -16,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //数据库第一次被创建时onCreate会被调用
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE lesson (id INTEGER PRIMARY KEY , ClassName VARCHAR, " +
+        db.execSQL("CREATE TABLE resident (id INTEGER PRIMARY KEY , ClassName VARCHAR, " +
                 "ClassPlace VARCHAR,ClassTimeWeek int,ClassTimeNode int,ClassTeacher VARCHAR)");
     }
 
