@@ -38,7 +38,7 @@ public class LoginActivity  extends Activity {
     private EditText usernameText;
     private EditText passwordText;
     private Button LoginBtn;
-    private  String result="1";
+    private  String result="test";
     private Handler handler2 = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
