@@ -1,6 +1,7 @@
 package com.example.ariel.housekeeping;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,25 +31,15 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private Button submitBtn;
     private String APPKEY = "11b16f73997aa";
     private String APPSECRETE = "301a2053d8243101c649a8e94ce1f414";
-    private String urlPath = "http://115.200.9.158:8080/HouseKeeping/register.action";
+    private String urlPath = "http://115.200.100.185:8080/HouseKeeping/register.action";
     private String accountStr;
     private String passwordStr;
     private String repasswordStr;
     private String verifyCodeStr;
-    private int time = 60;
-    private boolean ifcode=false;
-    private String result = "";
-    private Handler handler2 = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-
-        ;
-    };
+    private boolean iscode = false;
+    private int time = 90;
+    private String retrunRes = "";
+    private ProgressDialog progressDialog;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +78,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             //发送验证码
             case R.id.register_request_code_btn:
+                accountStr = account.getText().toString().trim();
                 //判断手机号码格式是否正确
                 if (!judgePhoneNums(accountStr)) {
                     return;
@@ -98,7 +90,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        for (int i = 60; i > 0; i--, time--) {
+                        for (int i = time; i > 0; i--, time--) {
                             handler.sendEmptyMessage(-9);
                             if (i <= 0) {
                                 break;
@@ -115,11 +107,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 break;
             //提交注册
             case R.id.commit_btn:
-                if( validate()) {
-                    Intent intent = new Intent();
-                    intent.setClass(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
+                validate();
                 break;
         }
     }
@@ -131,7 +119,22 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             } else if (msg.what == -8) {
                 verifyCodeBtn.setText("获取验证码");
                 verifyCodeBtn.setClickable(true);
-                time = 60;
+                time = 90;
+            } else if (msg.what == -10) {
+                progressDialog.dismiss();
+                if (retrunRes.equals("existed")) {
+                    Toast.makeText(getApplicationContext(), "该手机已注册", Toast.LENGTH_SHORT).show();
+                }
+                if (retrunRes.equals("success")) {
+                        Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent();
+                        intent.setClass(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+
+                }
+                if (retrunRes.equals("fail")) {
+                    Toast.makeText(getApplicationContext(), "服务器错误", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 int event = msg.arg1;
                 int result = msg.arg2;
@@ -140,15 +143,21 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     // 短信注册成功后，返回MainActivity,然后提示
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
-                        Toast.makeText(getApplicationContext(), "提交验证码成功",
-                                Toast.LENGTH_SHORT).show();
-                        ifcode=true;
+                        progressDialog = ProgressDialog.show(RegisterActivity.this,"","正在注册，请稍后");
+                        progressDialog.setCancelable(true);
+                        Register();
                     } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                         Toast.makeText(getApplicationContext(), "正在获取验证码",
                                 Toast.LENGTH_SHORT).show();
                     } else {
+                        Toast.makeText(getApplicationContext(), "操作失败",
+                                Toast.LENGTH_SHORT).show();
                         ((Throwable) data).printStackTrace();
                     }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "验证码错误",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -164,7 +173,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         return false;
     }
 
-    public  boolean isMatchLength(String str, int length) {
+    public boolean isMatchLength(String str, int length) {
         if (str.isEmpty()) {
             Toast.makeText(this, "手机号码不能为空！", Toast.LENGTH_SHORT).show();
             return false;
@@ -176,86 +185,62 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     /**
      * 验证手机格式
      */
-    public  boolean isMobileNO(String mobileNums) {
-        /*
-         * 移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
-         * 联通：130、131、132、152、155、156、185、186 电信：133、153、180、189、（1349卫通）
-         * 总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
-         */
-        String telRegex = "[1][358]\\d{9}";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+    public boolean isMobileNO(String mobileNums) {
+
+        String telRegex =  "^((13[0-9])|(15[^4,\\D])|(18[0,2,5-9]))\\d{8}$";
         if (TextUtils.isEmpty(mobileNums))
             return false;
         else
             return mobileNums.matches(telRegex);
     }
+
     //验证用户填写是否正确
     public boolean validate() {
-        accountStr=account.getText().toString().trim();
+        accountStr = account.getText().toString().trim();
         passwordStr = password.getText().toString().trim();
         repasswordStr = repassword.getText().toString().trim();
-        verifyCodeStr=verifyCode.getText().toString().trim();
-        Toast.makeText(getApplicationContext(), "accountStr="+accountStr+ " passwordStr="+passwordStr+" repasswordStr="+repasswordStr+" verifyCodeStr="+verifyCodeStr, Toast.LENGTH_SHORT).show();
-        if(!judgePhoneNums(accountStr)){
+        verifyCodeStr = verifyCode.getText().toString().trim();
+        //  Toast.makeText(getApplicationContext(), "accountStr="+accountStr+ " passwordStr="+passwordStr+" repasswordStr="+repasswordStr+" verifyCodeStr="+verifyCodeStr, Toast.LENGTH_SHORT).show();
+        if (!judgePhoneNums(accountStr)) {
             return false;
         }
         if (passwordStr.length() < 6 || passwordStr.length() > 16) {
             Toast.makeText(getApplicationContext(), "密码应为6-16位", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(!repasswordStr.equals(passwordStr)){
+        if (!repasswordStr.equals(passwordStr)) {
             Toast.makeText(getApplicationContext(), "密码不一致", Toast.LENGTH_SHORT).show();
             return false;
         }
-//        if(verifyCodeStr.equals("")){
-//            Toast.makeText(getApplicationContext(), "验证码不能为空", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        SMSSDK.submitVerificationCode("86", accountStr, verifyCode
-//                .getText().toString());
-//        if(!ifcode){
-//            Toast.makeText(getApplicationContext(), "验证码不正确", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-        if(!Register()){
+        if (verifyCodeStr.equals("")) {
+            Toast.makeText(getApplicationContext(), "验证码不能为空", Toast.LENGTH_SHORT).show();
             return false;
         }
+        SMSSDK.submitVerificationCode("86", accountStr, verifyCode
+                .getText().toString());
         return true;
     }
-//该手机号是否已经注册
-    public boolean Register(){
-        Toast.makeText(getApplicationContext(), "aaa", Toast.LENGTH_SHORT).show();
+
+    //该手机号是否已经注册
+    public void Register() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("username", accountStr);
-                    map.put("password",passwordStr);
-                    result = RequestService.postRequest(urlPath, map);
-                    handler2.sendEmptyMessage(0);
+                    map.put("password", passwordStr);
+                    retrunRes = RequestService.postRequest(urlPath, map);
+                    handler.sendEmptyMessage(-10);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-        if(result.equals("existed")){
-            Toast.makeText(getApplicationContext(), "该手机已注册", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(result.equals("success")){
-            Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if(result.equals("fail")){
-            Toast.makeText(getApplicationContext(), "不知名错误", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return false;
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        SMSSDK.unregisterAllEventHandler();
-//        super.onDestroy();
-//    }
+    @Override
+    protected void onDestroy() {
+        SMSSDK.unregisterAllEventHandler();
+        super.onDestroy();
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.ariel.housekeeping;
 
+import android.util.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,6 +48,7 @@ public class RequestService {
                  int len = 0;
                  try {
                         while((len = inputStream.read(data)) != -1) {
+                            Log.e("event", "event=" + data);
                                  byteArrayOutputStream.write(data, 0, len);
                              }
                      } catch (IOException e) {
