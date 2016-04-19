@@ -43,8 +43,6 @@ public class LoginActivity  extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-
-
                     if(result.equals("success")) {
                         Toast.makeText(LoginActivity.this,"登录成功！",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent();
