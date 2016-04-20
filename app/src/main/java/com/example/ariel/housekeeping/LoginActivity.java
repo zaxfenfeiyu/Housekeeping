@@ -45,6 +45,7 @@ public class LoginActivity  extends Activity {
                 case 0:
                     if(result.equals("success")) {
                         Toast.makeText(LoginActivity.this,"登录成功！",Toast.LENGTH_LONG).show();
+                        Data.setUsername(usernameText.getText().toString());
                         Intent intent = new Intent();
                         intent.setClass(LoginActivity.this, MainActivity.class);
                         startActivity(intent);

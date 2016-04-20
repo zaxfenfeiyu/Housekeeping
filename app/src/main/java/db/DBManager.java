@@ -44,7 +44,7 @@ public class DBManager {
      * @return  Cursor
      */
     public Cursor queryTheCursor() {
-        Cursor c = db.rawQuery("SELECT * FROM lesson", null);
+        Cursor c = db.rawQuery("SELECT * FROM resident", null);
         return c;
     }
 

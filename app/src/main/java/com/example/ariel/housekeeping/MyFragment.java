@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -20,6 +21,8 @@ public class MyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.activity_my, null);
         Button LoginBtn = (Button)view.findViewById(R.id.button9);
+        TextView username=(TextView)view.findViewById(R.id.textView2);
+        username.setText(username.getText()+Data.getUsername());
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
