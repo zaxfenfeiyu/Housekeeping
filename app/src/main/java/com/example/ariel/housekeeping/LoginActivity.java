@@ -1,6 +1,7 @@
 package com.example.ariel.housekeeping;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,20 +33,28 @@ public class LoginActivity  extends Activity {
     private EditText passwordText;
     private Button LoginBtn;
     private  String result="test";
+    private ProgressDialog progressDialog;
     private Handler handler2 = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
                     if(result.equals("success")) {
+                        progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this,"登录成功！",Toast.LENGTH_LONG).show();
                         Data.setUsername(usernameText.getText().toString());
                         Intent intent = new Intent();
                         intent.setClass(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
-                    else
+                    else if(result.equals("fail"))
+                    {
+                        progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"登录失败！",Toast.LENGTH_LONG).show();
-
+                    }
+                    else{
+                        progressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this,"连接服务器失败！",Toast.LENGTH_LONG).show();
+                    }
                     break;
             }
         }
@@ -75,19 +84,22 @@ public class LoginActivity  extends Activity {
         {
             public void onClick(View v)
             {
-
+                progressDialog = ProgressDialog.show(LoginActivity.this,"","正在登录中，请稍后");
+                progressDialog.setCancelable(true);
                 Map<String, String> params = new HashMap<String, String>();
 
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
+
                             String username=usernameText.getText().toString();
                             String password=passwordText.getText().toString();
                             Map<String, String> map = new HashMap<String, String>();
                             map.put("username", username);
                             map.put("password",password);
                             result=submitPostData(map,"utf-8");
+
                             handler2.sendEmptyMessage(0);
 
                         } catch (Exception e) {

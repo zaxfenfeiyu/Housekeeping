@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pink"
     tools:context=".MainActivity"
     android:weightSum="1">
 
@@ -19,7 +20,7 @@
             android:id="@+id/textView"
             android:autoText="true"
             android:background="@drawable/button_shape"
-            android:text="好家政"
+            android:text="蓝天家政"
             android:gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -34,40 +35,40 @@
 
         <ImageView
             android:src="@drawable/pic1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/imageView6" />
 
     </TableRow>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/register"
             android:text="月嫂"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:background="@drawable/edit_shape" />
+            android:background="@drawable/button_main" />
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="保姆"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:background="@drawable/edit_shape" />
+            android:background="@drawable/button_main" />
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="看护护理"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:background="@drawable/edit_shape" />
+            android:textSize="17dp"
+            android:background="@drawable/button_main"/>
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="家庭教育"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:background="@drawable/edit_shape" />
+            android:textSize="17sp"
+            android:background="@drawable/button_main" />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -77,52 +78,54 @@
             android:layout_height="wrap_content"
             android:text="清洁"
             android:layout_weight="1"
-            android:background="@drawable/edit_shape"
+            android:background="@drawable/button_main"
             android:textSize="20sp" />
 
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="维修"
             android:layout_weight="1"
-            android:background="@drawable/edit_shape"
+            android:background="@drawable/button_main"
             android:textSize="20sp" />
 
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="搬家"
             android:layout_weight="1"
-            android:background="@drawable/edit_shape"
+            android:background="@drawable/button_main"
             android:textSize="20sp" />
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="钟点工"
             android:layout_weight="1"
-            android:background="@drawable/edit_shape"
+            android:background="@drawable/button_main"
             android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.20">
+        android:layout_weight="0.20"
+        android:layout_marginTop="0dp">
         <Button android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="VIP服务"
             android:layout_weight="1"
             android:textSize="25sp"
-            android:background="@drawable/edit_shape" />
+            android:background="@drawable/button_main" />
         <Button android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="优惠套餐"
             android:layout_weight="1"
             android:textSize="25sp"
-            android:background="@drawable/edit_shape" />
+            android:background="@drawable/button_main" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         android:layout_weight="0.31">
 
         <Button
@@ -130,7 +133,7 @@
             android:layout_height="match_parent"
             android:text="金牌服务商推荐"
             android:id="@+id/button10"
-            android:background="@drawable/edit_shape"
+            android:background="@drawable/button_main"
             android:textSize="25sp" />
     </LinearLayout>
 

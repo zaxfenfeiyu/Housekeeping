@@ -16,7 +16,7 @@ public class HostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.activity_host, null);
-        Button btn = (Button)view.findViewById(R.id.register);
+        /*Button btn = (Button)view.findViewById(R.id.register);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,7 +24,7 @@ public class HostFragment extends Fragment {
                 Intent intent = new Intent(getActivity(),RegisterActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         return view;
     }
 
