@@ -62,7 +62,9 @@
                 android:layout_height="wrap_content"
                 android:text="点我登录"
                 android:id="@+id/button19"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/buton_style"
+                android:textColor="@color/red2" />
 
         </TableRow>
 
@@ -87,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="常用服务地址"
-            android:id="@+id/button3"
+            android:id="@+id/btn_usual_address"
             android:background="@color/transparent"
             android:textColor="@color/peach"
             android:textSize="20sp"
@@ -116,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="完善个人信息"
-            android:id="@+id/button4"
+            android:id="@+id/btn_perfect_information"
             android:background="@color/transparent"
             android:textColor="@color/peach"
             android:textSize="20sp"
@@ -143,36 +145,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="订单详情"
-            android:id="@+id/button12"
-            android:background="@color/transparent"
-            android:textColor="@color/peach"
-            android:textSize="20sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/textView19" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/order"
-            android:id="@+id/textView19"
-            android:background="@drawable/buton_style"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp" >
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="我的收藏"
-            android:id="@+id/button6"
+            android:id="@+id/btn_my_collection"
             android:background="@color/transparent"
             android:textColor="@color/peach"
             android:textSize="20sp"
@@ -200,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="更多设置"
-            android:id="@+id/button5"
+            android:id="@+id/btn_more_setting"
             android:background="@color/transparent"
             android:textColor="@color/peach"
             android:textSize="20sp"
