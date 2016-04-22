@@ -2,6 +2,11 @@ package com.example.ariel.housekeeping;
 
 import android.util.Log;
 
+import com.example.ariel.housekeeping.entity.ProviderEntity;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +14,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,5 +79,39 @@ public class RequestService {
             e.printStackTrace();
         }
         return stringBuffer;
+    }
+    public static List<ProviderEntity> getJSONData(String urlPath) throws Exception {
+        List<ProviderEntity> list = new ArrayList<ProviderEntity>();
+        URL url = new URL(urlPath);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setConnectTimeout(3000);        //设置连接超时时间
+        conn.setDoInput(true);                  //打开输入流，以便从服务器获取数据
+        int response = conn.getResponseCode();            //获得服务器的响应码
+        Log.e("conn", "conn="+ response);
+        if (response== 200) {
+            InputStream in = conn.getInputStream();
+            String str=dealResponseResult(in);
+            list = parseJSON(str);
+        }
+        return list;
+
+    }
+    /**
+     * 将json数据转化成providerEntity
+     * @param str
+     * @return providerEntity的List
+     * @throws Exception
+     */
+    public static List<ProviderEntity> parseJSON(String str)throws Exception{
+        List<ProviderEntity> list = new ArrayList<ProviderEntity>();
+        ProviderEntity providerEntity = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for(int i=0;i<length;i++){
+            JSONObject object = array.getJSONObject(i);
+            providerEntity = new ProviderEntity( object.getString("name"), object.getInt("rank"));
+            list.add(providerEntity);
+        }
+        return list;
     }
 }

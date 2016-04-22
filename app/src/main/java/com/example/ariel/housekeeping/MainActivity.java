@@ -1,41 +1,72 @@
 package com.example.ariel.housekeeping;
 
+import android.app.TabActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.ariel.housekeeping.entity.ProviderEntity;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class MainActivity extends FragmentActivity {
     private FragmentTabHost mTabHost;
     private LayoutInflater mLayoutInflater;
+    private List<ProviderEntity> providerEntities;
+    private String urlPath = "http://115.200.23.167:8080/HouseKeeping/getAll.action";
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+
+                    Bundle bundle = new Bundle();
+
+                    Log.e("provider", "provider=" + providerEntities.get(0).getName());
+                    bundle.putSerializable("list", (Serializable) providerEntities);
+
+                    break;
+            }
+        }
+    };
+
+
+
+
     /**
      * Fragment数组界面
      *
      */
-    private Class mFragmentArray[] = { HostFragment.class,ServiceFragment.class,OrderFragment.class,
+    private Class mFragmentArray[] = { HostFragment.class,OrderFragment.class,
             MyFragment.class};
     /**
      * 存放图片数组
      *
      */
     private int mImageArray[] = { R.drawable.host,
-            R.drawable.service, R.drawable.order,
+            R.drawable.order,
             R.drawable.user};
     /**
      * 选修卡文字
      *
      */
-    private String mTextArray[] = { "首页", "服务商", "订单", "我" };
+    private String mTextArray[] = { "首页", "订单", "我" };
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
@@ -60,6 +91,7 @@ public class MainActivity extends FragmentActivity {
             mTabHost.getTabWidget().getChildAt(i)
                     .setBackgroundResource(R.drawable.selector_tab_background);
         }
+        mTabHost.getTabWidget().setDividerDrawable(null);
     }
     /**
      *
@@ -73,5 +105,22 @@ public class MainActivity extends FragmentActivity {
         textView.setTextSize(15);
         textView.setText(mTextArray[index]);
         return view;
+    }
+
+
+    public void getProviders() {
+        Toast.makeText(getApplicationContext(), "正在",
+                Toast.LENGTH_SHORT).show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    providerEntities = RequestService.getJSONData(urlPath);
+                    handler.sendEmptyMessage(0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

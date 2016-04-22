@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle" >//框为矩形
-        <solid android:color="#FFFFFF" />  //用白色来填充里面
+        <solid android:color="@color/white"/>  //用白色来填充里面
         <stroke
         android:width="1dp"
         android:color="@color/grey" /> //边框是1dp的线
