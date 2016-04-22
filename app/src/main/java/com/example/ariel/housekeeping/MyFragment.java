@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class MyFragment extends Fragment {
     private Button usualAddress;
     private Button perfectInformation;
-    private Button  myCollection;
+//    private Button  myCollection;
     private Button moreSetting;
 
     @Override
@@ -28,7 +28,7 @@ public class MyFragment extends Fragment {
         Button LoginBtn = (Button)view.findViewById(R.id.button9);
         usualAddress=(Button)view.findViewById(R.id.btn_usual_address) ;
         perfectInformation=(Button)view.findViewById(R.id.btn_perfect_information) ;
-        myCollection=(Button)view.findViewById(R.id.btn_my_collection) ;
+//        myCollection=(Button)view.findViewById(R.id.btn_my_collection) ;
         moreSetting=(Button)view.findViewById(R.id.btn_more_setting) ;
         TextView username=(TextView)view.findViewById(R.id.textView2);
 
