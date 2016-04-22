@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="点我登录"
-                android:id="@+id/button19"
+                android:id="@+id/btn_login"
                 android:layout_weight="1"
                 android:background="@drawable/buton_style"
                 android:textColor="@color/red2" />

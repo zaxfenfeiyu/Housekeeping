@@ -25,7 +25,7 @@ public class MyFragment extends Fragment {
         View view=inflater.inflate(R.layout.activity_my, null);
 
 
-        Button LoginBtn = (Button)view.findViewById(R.id.button9);
+        Button LoginBtn = (Button)view.findViewById(R.id.btn_login);
         usualAddress=(Button)view.findViewById(R.id.btn_usual_address) ;
         perfectInformation=(Button)view.findViewById(R.id.btn_perfect_information) ;
 //        myCollection=(Button)view.findViewById(R.id.btn_my_collection) ;

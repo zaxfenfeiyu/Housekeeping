@@ -46,9 +46,9 @@ public class MainActivity extends FragmentActivity {
     /**
      * 存放图片数组
      */
-    private int mImageArray[] = {R.drawable.host,
-            R.drawable.service, R.drawable.order,
-            R.drawable.user};
+    private int mImageArray[] = {R.drawable.home2,
+             R.drawable.order2,
+            R.drawable.my2};
     /**
      * 选修卡文字
      */
