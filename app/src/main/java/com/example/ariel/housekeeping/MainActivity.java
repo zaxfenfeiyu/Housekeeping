@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
     /**
      * Fragment数组界面
      */
-    private Class mFragmentArray[] = {HostFragment.class, ServiceFragment.class, OrderFragment.class,
+    private Class mFragmentArray[] = {HostFragment.class, OrderFragment.class,
             MyFragment.class};
     /**
      * 存放图片数组

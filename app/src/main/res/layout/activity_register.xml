@@ -65,7 +65,7 @@
                 android:id="@+id/register_input_account_edit"
                 android:singleLine="true"
                 android:background="@drawable/edit_shape"
-                android:hint="请输入账号"/>
+                android:hint="请输入登记号"/>
 
         </TableRow>
 
@@ -110,34 +110,6 @@
                 android:id="@+id/register_input_repassword_edit"
                 android:background="@drawable/edit_shape"
                 android:hint="再次输入确认密码"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" >
-
-            <ImageView
-                android:src="@drawable/user"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:id="@+id/imageView12" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/register_input_code_edit"
-                android:background="@drawable/edit_shape"
-                android:hint="请输入验证码" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="获取验证码"
-                android:id="@+id/register_request_code_btn"
-                android:background="@color/white" />
         </TableRow>
 
         <TableRow

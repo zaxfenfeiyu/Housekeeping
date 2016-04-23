@@ -32,6 +32,7 @@ public class LoginActivity  extends Activity {
     private EditText usernameText;
     private EditText passwordText;
     private Button LoginBtn;
+    private Button registerBtn;
     private  String result="test";
     private ProgressDialog progressDialog;
     private Handler handler2 = new Handler() {
@@ -66,6 +67,14 @@ public class LoginActivity  extends Activity {
         passwordText = (EditText) findViewById(R.id.editText2);
         LoginBtn = (Button) findViewById(R.id.button1);
         LoginBtn.setOnClickListener(BtnListener);
+        registerBtn=(Button)findViewById(R.id.btn_register);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
        // new Thread(networkTask).start();
 
     }

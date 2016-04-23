@@ -14,6 +14,7 @@ import android.widget.Toast;
  * Created by ariel on 2016/4/14.
  */
 public class MyFragment extends Fragment {
+    private Button loginBtn;
     private Button usualAddress;
     private Button perfectInformation;
 //    private Button  myCollection;
@@ -25,7 +26,7 @@ public class MyFragment extends Fragment {
         View view=inflater.inflate(R.layout.activity_my, null);
 
 
-        Button LoginBtn = (Button)view.findViewById(R.id.btn_login);
+        loginBtn = (Button)view.findViewById(R.id.btn_login);
         usualAddress=(Button)view.findViewById(R.id.btn_usual_address) ;
         perfectInformation=(Button)view.findViewById(R.id.btn_perfect_information) ;
 //        myCollection=(Button)view.findViewById(R.id.btn_my_collection) ;
@@ -72,7 +73,7 @@ public class MyFragment extends Fragment {
         });
 
         username.setText(username.getText()+Data.getUsername());
-        LoginBtn.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //在这里使用getActivity

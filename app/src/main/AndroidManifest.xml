@@ -17,6 +17,11 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".AddressActivity" />
+        <activity android:name=".AllOrderActivity" />
+        <activity android:name=".InformationActivity" />
+        <activity android:name=".MoreSettingActivity" />
+
 
         <activity
             android:name="com.mob.tools.MobUIShell"

@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="确认信息"
-                android:id="@+id/button14"
+                android:id="@+id/btn_infor_conmit"
                 android:background="@drawable/button_shape"
                 android:textSize="20sp"
                 android:textColor="@color/white" />
