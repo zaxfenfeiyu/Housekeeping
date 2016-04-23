@@ -3,6 +3,7 @@ package com.example.ariel.housekeeping;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+import db.DBHelper;
 
 /**
  * Created by ariel on 2016/4/14.
@@ -127,6 +129,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 }
                 if (retrunRes.equals("success")) {
                         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent();
                         intent.setClass(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);

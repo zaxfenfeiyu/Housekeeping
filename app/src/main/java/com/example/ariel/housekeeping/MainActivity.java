@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
     /**
      * Fragment数组界面
      */
-    private Class mFragmentArray[] = {HostFragment.class, ServiceFragment.class, OrderFragment.class,
+    private Class mFragmentArray[] = {HostFragment.class, OrderFragment.class,
             MyFragment.class};
     /**
      * 存放图片数组
@@ -75,6 +75,7 @@ public class MainActivity extends FragmentActivity {
         int count = mFragmentArray.length;
         for (int i = 0; i < count; i++) {
             // 给每个Tab按钮设置图标、文字和内容
+
             TabHost.TabSpec tabSpec = mTabHost.newTabSpec(mTextArray[i])
                     .setIndicator(getTabItemView(i));
             // 将Tab按钮添加进Tab选项卡中

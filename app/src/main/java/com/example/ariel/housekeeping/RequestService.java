@@ -67,8 +67,7 @@ public class RequestService {
 
     public static StringBuffer getRequestData(Map<String, String> params, String encode) {
         StringBuffer stringBuffer = new StringBuffer();        //存储封装好的请求体信息
-        try {
-            for(Map.Entry<String, String> entry : params.entrySet()) {
+        try {            for(Map.Entry<String, String> entry : params.entrySet()) {
                 stringBuffer.append(entry.getKey())
                         .append("=")
                         .append(URLEncoder.encode(entry.getValue(), encode))
