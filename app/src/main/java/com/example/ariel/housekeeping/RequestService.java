@@ -3,6 +3,7 @@ package com.example.ariel.housekeeping;
 import android.util.Log;
 
 import com.example.ariel.housekeeping.entity.ProviderEntity;
+import com.example.ariel.housekeeping.entity.ResidentEntity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ import java.util.Map;
  * Created by ariel on 2016/4/17.
  */
 public class RequestService {
-    public static String postRequest(String urlPath,Map<String,String> map) throws Exception {
+    public static InputStream postRequest(String urlPath,Map<String,String> map) throws Exception {
         byte[] data = getRequestData(map, "utf-8").toString().getBytes();
         URL url=new URL(urlPath);
         HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -43,9 +44,9 @@ public class RequestService {
 
         if (response == HttpURLConnection.HTTP_OK) {
             InputStream inptStream = httpURLConnection.getInputStream();
-            return dealResponseResult(inptStream);   //处理服务器的响应结果
+            return inptStream;   //处理服务器的响应结果
         }
-            return "";
+            return null;
     }
 
     public static String dealResponseResult(InputStream inputStream) {
@@ -91,7 +92,6 @@ public class RequestService {
         if (response== 200) {
             InputStream in = conn.getInputStream();
             String str=dealResponseResult(in);
-            list = parseJSON(str);
         }
         return list;
 
@@ -102,7 +102,7 @@ public class RequestService {
      * @return providerEntity的List
      * @throws Exception
      */
-    public static List<ProviderEntity> parseJSON(String str)throws Exception{
+    public static List<ProviderEntity> providerJSON(String str)throws Exception{
         List<ProviderEntity> list = new ArrayList<ProviderEntity>();
         ProviderEntity providerEntity = null;
         JSONArray array = new JSONArray(str);
@@ -111,6 +111,24 @@ public class RequestService {
             JSONObject object = array.getJSONObject(i);
             providerEntity = new ProviderEntity( object.getString("name"), object.getInt("rank"));
             list.add(providerEntity);
+        }
+        return list;
+    }
+    /**
+     * 将json数据转化成ResidentEntity
+     * @param str
+     * @return ResidentEntity的List
+     * @throws Exception
+     */
+    public static List<ResidentEntity> residentJSON(String str)throws Exception{
+        List<ResidentEntity> list = new ArrayList<ResidentEntity>();
+        ResidentEntity residentEntity = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for(int i=0;i<length;i++){
+            JSONObject object = array.getJSONObject(i);
+            residentEntity = new ResidentEntity( object.getString("account"),object.getString("realname"),object.getString("address"),object.getString("phone"));
+            list.add(residentEntity);
         }
         return list;
     }

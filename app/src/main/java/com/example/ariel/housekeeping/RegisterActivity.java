@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,7 +109,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("account",accountStr);
                     map.put("password", passwordStr);
-                    retrunRes = RequestService.postRequest(urlPath, map);
+                    InputStream inptStream =RequestService.postRequest(urlPath, map);
+                    retrunRes =RequestService.dealResponseResult(inptStream);
                     handler.sendEmptyMessage(-10);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -29,7 +29,7 @@ public class OrderFragment extends Fragment {
         allOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),AddressActivity.class);
+                Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 startActivity(intent);
             }
         });

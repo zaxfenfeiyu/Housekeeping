@@ -47,9 +47,9 @@
         android:layout_marginTop="10dp">
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="月嫂"
+            android:text="钟点工"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/button_main" />
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,13 +93,13 @@
             android:text="搬家"
             android:layout_weight="1"
             android:background="@drawable/button_main"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="钟点工"
+            android:text="母婴护理"
             android:layout_weight="1"
             android:background="@drawable/button_main"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"

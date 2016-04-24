@@ -1,5 +1,6 @@
 package com.example.ariel.housekeeping;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -115,5 +116,11 @@ public class MainActivity extends FragmentActivity {
                             }
                     }).start();
             }
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        mTabHost = null;
+    }
 }
 

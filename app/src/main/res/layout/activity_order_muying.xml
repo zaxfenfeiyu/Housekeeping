@@ -175,7 +175,7 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="确认提交"
             android:textSize="20sp"
@@ -192,7 +192,8 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/money"
             android:id="@+id/textView8"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:layout_alignParentBottom="false" />
 
     </RelativeLayout>
 

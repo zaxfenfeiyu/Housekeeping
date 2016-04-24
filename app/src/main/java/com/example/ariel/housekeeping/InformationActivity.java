@@ -13,7 +13,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.ariel.housekeeping.entity.ResidentEntity;
+
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.smssdk.EventHandler;
@@ -22,7 +26,7 @@ import cn.smssdk.SMSSDK;
 /**
  * Created by ariel on 2016/4/22.
  */
-public class InformationActivity extends Activity  implements View.OnClickListener{
+public class InformationActivity extends Activity implements View.OnClickListener {
     private EditText realName;
     private EditText address;
     private EditText phoneNum;
@@ -32,13 +36,16 @@ public class InformationActivity extends Activity  implements View.OnClickListen
     private String phoneNumStr;
     private String confirmCodeStr;
     private Button confirmCodeBtn;
-    private Button conmit;
+    private Button commitBtn;
+    private String account;
     private ImageButton returnBtn;
     private String APPKEY = "11b16f73997aa";
     private String APPSECRETE = "301a2053d8243101c649a8e94ce1f414";
-    private String urlPath = "http://115.200.100.185:8080/HouseKeeping/editInfor.action";
-    private int time=90;
+    private String urlPath2 = "http://115.200.3.97:8080/HouseKeeping/editInfor.action";
+    private String urlPath1 = "http://115.200.3.97:8080/HouseKeeping/getInfor.action";
+    private int time = 60;
     private String retrunRes = "";
+    private  List<ResidentEntity> relist;
     private ProgressDialog progressDialog;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -46,21 +53,25 @@ public class InformationActivity extends Activity  implements View.OnClickListen
         setContentView(R.layout.activity_edit_imformation);
 
         //ID赋值
-        confirmCode=(EditText)findViewById(R.id.input_confirmCode) ;
-        confirmCodeBtn=(Button)findViewById(R.id.btn_confirmCode) ;
-        phoneNum=(EditText) findViewById(R.id.input_phoneNum);
-        realName=(EditText)findViewById(R.id.input_realName) ;
-        address=(EditText)findViewById(R.id.input_personAddress) ;
+        confirmCode = (EditText) findViewById(R.id.input_confirmCode);
+        confirmCodeBtn = (Button) findViewById(R.id.btn_confirmCode);
+        phoneNum = (EditText) findViewById(R.id.input_phoneNum);
+        realName = (EditText) findViewById(R.id.input_realName);
+        address = (EditText) findViewById(R.id.input_personAddress);
+        commitBtn=(Button) findViewById(R.id.btn_infor_commit);
+
+        confirmCodeBtn.setOnClickListener(this);
+        commitBtn.setOnClickListener(this);
 
         //监听返回键
-        returnBtn=(ImageButton)findViewById(R.id.btn_infor_return);
+        returnBtn = (ImageButton) findViewById(R.id.btn_infor_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        getInfor();
         // 启动短信验证sdk
         SMSSDK.initSDK(this, APPKEY, APPSECRETE);
         EventHandler eventHandler = new EventHandler() {
@@ -76,6 +87,7 @@ public class InformationActivity extends Activity  implements View.OnClickListen
         //注册回调监听接口
         SMSSDK.registerEventHandler(eventHandler);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -109,7 +121,7 @@ public class InformationActivity extends Activity  implements View.OnClickListen
                 }).start();
                 break;
             //提交
-            case R.id.btn_infor_conmit:
+            case R.id.btn_infor_commit:
                 validate();
                 break;
         }
@@ -122,21 +134,27 @@ public class InformationActivity extends Activity  implements View.OnClickListen
             } else if (msg.what == -8) {
                 confirmCodeBtn.setText("获取验证码");
                 confirmCodeBtn.setClickable(true);
-                time = 90;
+                time = 60;
             } else if (msg.what == -10) {
                 progressDialog.dismiss();
                 if (retrunRes.equals("existed")) {
                     Toast.makeText(getApplicationContext(), "该手机已注册", Toast.LENGTH_SHORT).show();
                 }
-                if (retrunRes.equals("success")) {
+                if (retrunRes.equals("succeed")) {
                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();
-                   finish();
+                    finish();
 
                 }
-                if (retrunRes.equals("fail")) {
+                if (retrunRes.equals("failed")) {
                     Toast.makeText(getApplicationContext(), "服务器错误", Toast.LENGTH_SHORT).show();
                 }
-            } else {
+            }
+            else if (msg.what == -11) {
+                realName.setText(relist.get(0).getRealname());
+                address.setText(relist.get(0).getAddress());
+                phoneNum.setText(relist.get(0).getPhone());
+            }
+            else {
                 int event = msg.arg1;
                 int result = msg.arg2;
                 Object data = msg.obj;
@@ -144,7 +162,7 @@ public class InformationActivity extends Activity  implements View.OnClickListen
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     // 短信注册成功后，返回MainActivity,然后提示
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
-                        progressDialog = ProgressDialog.show(InformationActivity.this,"","正在提交，请稍后");
+                        progressDialog = ProgressDialog.show(InformationActivity.this, "", "正在提交，请稍后");
                         progressDialog.setCancelable(true);
                         perfect();
                     } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
@@ -155,8 +173,7 @@ public class InformationActivity extends Activity  implements View.OnClickListen
                                 Toast.LENGTH_SHORT).show();
                         ((Throwable) data).printStackTrace();
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "验证码错误",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -176,7 +193,6 @@ public class InformationActivity extends Activity  implements View.OnClickListen
 
     public boolean isMatchLength(String str, int length) {
         if (str.isEmpty()) {
-            Toast.makeText(this, "手机号码不能为空！", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             return str.length() == length ? true : false;
@@ -188,7 +204,7 @@ public class InformationActivity extends Activity  implements View.OnClickListen
      */
     public boolean isMobileNO(String mobileNums) {
 
-        String telRegex =  "^((13[0-9])|(15[^4,\\D])|(18[0,2,5-9]))\\d{8}$";
+        String telRegex = "^((13[0-9])|(15[^4,\\D])|(18[0,2,5-9]))\\d{8}$";
         if (TextUtils.isEmpty(mobileNums))
             return false;
         else
@@ -202,10 +218,12 @@ public class InformationActivity extends Activity  implements View.OnClickListen
             public void run() {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
+                    map.put("account", account);
                     map.put("realName", realNameStr);
                     map.put("phoneNum", phoneNumStr);
                     map.put("address", addressStr);
-                    retrunRes = RequestService.postRequest(urlPath, map);
+                    InputStream inptStream = RequestService.postRequest(urlPath2, map);
+                    retrunRes = RequestService.dealResponseResult(inptStream);
                     handler.sendEmptyMessage(-10);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -215,23 +233,23 @@ public class InformationActivity extends Activity  implements View.OnClickListen
     }
 
     //验证
-    public boolean validate(){
-        realNameStr=realName.getText().toString().trim();
-        phoneNumStr=phoneNum.getText().toString().trim();
-        addressStr=address.getText().toString().trim();
-        confirmCodeStr=confirmCode.getText().toString().trim();
-        if(realNameStr.equals("")){
+    public boolean validate() {
+        realNameStr = realName.getText().toString().trim();
+        phoneNumStr = phoneNum.getText().toString().trim();
+        addressStr = address.getText().toString().trim();
+        confirmCodeStr = confirmCode.getText().toString().trim();
+        if (realNameStr.equals("")) {
             Toast.makeText(this, "姓名不能为空！", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(!judgePhoneNums(phoneNumStr)){
+        if (!judgePhoneNums(phoneNumStr)) {
             return false;
         }
-        if (addressStr.equals("")){
+        if (addressStr.equals("")) {
             Toast.makeText(this, "地址不能为空！", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (confirmCodeStr.equals("")){
+        if (confirmCodeStr.equals("")) {
             Toast.makeText(this, "验证码不能为空！", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -239,6 +257,26 @@ public class InformationActivity extends Activity  implements View.OnClickListen
                 .getText().toString());
         return true;
     }
+
+    public void getInfor() {
+        account = "123456789";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put("account", account);
+                    InputStream inptStream = RequestService.postRequest(urlPath1, map);
+                    String str=RequestService.dealResponseResult(inptStream);
+                    relist=RequestService.residentJSON(str);
+                    handler.sendEmptyMessage(-11);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
     @Override
     protected void onDestroy() {
         SMSSDK.unregisterAllEventHandler();
