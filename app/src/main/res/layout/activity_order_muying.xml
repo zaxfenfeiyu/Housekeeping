@@ -14,6 +14,19 @@
         android:layout_height="50dp"
         android:background="@color/red">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:autoText="false"
+            android:background="@drawable/button_shape"
+            android:text="保姆"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"
+            android:textColor="@color/white" />
+
         <ImageButton
             android:src="@drawable/back"
             android:layout_width="wrap_content"
@@ -23,19 +36,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/transparent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/textView"
-            android:autoText="false"
-            android:background="@drawable/button_shape"
-            android:text="保姆"
-            android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="25sp"
-            android:textColor="@color/white" />
 
     </RelativeLayout>
 
@@ -52,13 +52,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/house"
+                android:drawableRight="@drawable/rightarrow"
                 android:id="@+id/textView18"
-                android:background="@color/white"
-                android:text="是否住家"
+                android:background="@color/white" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请选择子分类"
+                android:id="@+id/button2"
+                android:background="@color/transparent"
                 android:textColor="@color/peach"
                 android:textSize="20sp"
                 android:layout_alignParentTop="true"
-                android:gravity="center" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignBottom="@+id/textView18" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -66,6 +75,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/time"
+            android:id="@+id/textView3"
+            android:background="@color/white" />
 
         <Button
             android:layout_width="match_parent"
@@ -80,19 +96,19 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/textView3" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/time"
-            android:id="@+id/textView3"
-            android:background="@color/white" />
-
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/address"
+            android:id="@+id/textView4"
+            android:background="@color/white" />
 
         <Button
             android:layout_width="match_parent"
@@ -107,18 +123,19 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/textView4" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/address"
-            android:id="@+id/textView4"
-            android:background="@color/white" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/information"
+            android:id="@+id/textView6"
+            android:background="@color/white" />
 
         <Button
             android:layout_width="match_parent"
@@ -133,18 +150,19 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/textView6" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/information"
-            android:id="@+id/textView6"
-            android:background="@color/white" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ticket"
+            android:id="@+id/textView5"
+            android:background="@color/white" />
 
         <Button
             android:layout_width="match_parent"
@@ -159,13 +177,6 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/textView5" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ticket"
-            android:id="@+id/textView5"
-            android:background="@color/white" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -173,9 +184,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/money"
+            android:id="@+id/textView8"
+            android:background="@color/white" />
+
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="确认提交"
             android:textSize="20sp"
@@ -186,14 +204,6 @@
             android:layout_alignParentEnd="true"
             android:background="@color/transparent"
             android:layout_alignBottom="@+id/textView8" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/money"
-            android:id="@+id/textView8"
-            android:background="@color/white"
-            android:layout_alignParentBottom="false" />
 
     </RelativeLayout>
 

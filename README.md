@@ -1,4 +1,4 @@
-# Housekeeping
+﻿# Housekeeping
 
 ###2016/4/15  by Ariel
 
@@ -41,3 +41,11 @@
 添加了个人中心页面各个按钮的跳转，以及跳转后返回键的监听
 
 添加了订单中心——全部订单页面的跳转和返回
+
+###2016/4/23 by Ariel
+
+在LoginActivity中添加了progressDialog，在MyFragment中添加了显示用户名，并且当用户登录时登录按钮取消。添加了DBManager.java。在LoginActivity中，登录成功后将数据添加到本地数据库中
+
+###2016/4/23 by Disagree
+
+修改了PlaceOrderActivity.java和activity_order_yuesao.xml，添加了rightarrow.png图片
