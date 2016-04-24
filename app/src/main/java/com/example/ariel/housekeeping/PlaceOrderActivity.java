@@ -37,7 +37,7 @@ public class PlaceOrderActivity extends Activity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PlaceOrderActivity.this);
                     builder.setIcon(R.drawable.home2);
                     builder.setTitle("选择一个家政分类");
-//...
+//....
                     //从数据库中寻找用户所选择的子分类
 
                     //    指定下拉列表的显示数据
