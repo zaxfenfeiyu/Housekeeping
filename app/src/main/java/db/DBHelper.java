@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE resident (id INTEGER PRIMARY KEY , username VARCHAR, " +
                 "password VARCHAR,realname VARCHAR,address VARCHAR,rank FLOAT,phone VARCHAR)");
-        db.execSQL("CREATE TABLE order (id INTEGER PRIMARY KEY , res_id INTEGER, " +
+        db.execSQL("CREATE TABLE userorder (id INTEGER PRIMARY KEY , res_id INTEGER, " +
                 "pro_id INTEGER,od_id INTEGER,state VARCHAR,price FLOAT,time TIME,rank INT,remark VARCHAR)");
     }
 

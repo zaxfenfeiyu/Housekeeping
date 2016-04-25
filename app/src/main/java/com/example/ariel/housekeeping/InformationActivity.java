@@ -41,8 +41,8 @@ public class InformationActivity extends Activity implements View.OnClickListene
     private ImageButton returnBtn;
     private String APPKEY = "11b16f73997aa";
     private String APPSECRETE = "301a2053d8243101c649a8e94ce1f414";
-    private String urlPath2 = "http://115.200.3.97:8080/HouseKeeping/editInfor.action";
-    private String urlPath1 = "http://115.200.3.97:8080/HouseKeeping/getInfor.action";
+    private String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/editInfor.action";
+    private String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getInfor.action";
     private int time = 60;
     private String retrunRes = "";
     private  List<ResidentEntity> relist;

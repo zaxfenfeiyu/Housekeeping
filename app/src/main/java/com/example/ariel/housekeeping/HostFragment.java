@@ -12,19 +12,23 @@ import android.widget.Button;
  * Created by ariel on 2016/4/14.
  */
 public class HostFragment extends Fragment {
+    Button btn_muying;
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.activity_host, null);
-        /*Button btn = (Button)view.findViewById(R.id.register);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn_muying = (Button)view.findViewById(R.id.muying);
+        btn_muying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //在这里使用getActivity
-                Intent intent = new Intent(getActivity(),RegisterActivity.class);
+                Intent intent = new Intent(getActivity(),PlaceOrderActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("type",btn_muying.getText().toString());
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
-        });*/
+        });
         return view;
     }
 

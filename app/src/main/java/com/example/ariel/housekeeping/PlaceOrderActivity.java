@@ -26,7 +26,7 @@ import java.util.Map;
 public class PlaceOrderActivity extends Activity {
     TextView title,TotalMoney;
     Button ChooseTypeBtn;
-    String urlPath="http://192.168.47.1:8080/HouseKeeping/getSCbyST.action";
+    String urlPath="http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
     String [] catalog={};
     double []money={};
     private List<ServicecatalogEntity> sclist;
@@ -34,13 +34,13 @@ public class PlaceOrderActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case -12:
-                    int i=0;
-                    while(!sclist.isEmpty())
+                    Toast.makeText(PlaceOrderActivity.this,sclist.size(),Toast.LENGTH_LONG).show();
+                 /*   for(int i=0;i<sclist.size();i++)
                     {
+
                         catalog[i]=sclist.get(i).getName();
                         money[i]=sclist.get(i).getPrice();
-                        i+=1;
-                    }
+                    }*/
             }
         }
     };
@@ -50,8 +50,9 @@ public class PlaceOrderActivity extends Activity {
 
         //根据用户选择的按钮更改该界面的标题
         title=(TextView)findViewById(R.id.textView1);
-        Intent intent=new Intent();
+        Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
+
         title.setText(bundle.getString("type"));
 
         TotalMoney=(TextView)findViewById(R.id.textView8) ;
@@ -66,16 +67,19 @@ public class PlaceOrderActivity extends Activity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PlaceOrderActivity.this);
                     builder.setIcon(R.drawable.home2);
                     builder.setTitle("选择一个家政分类");
-//....
+                    //String st=title.getText().toString();
+                    //Toast.makeText(PlaceOrderActivity.this,title.getText().toString(),Toast.LENGTH_LONG).show();
                     //从数据库中寻找用户所选择的子分类
                     Map<String, String> params = new HashMap<String, String>();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                String st=title.getText().toString();
+
                                 Map<String, String> map = new HashMap<String, String>();
-                                map.put("st", st);
+                                //Toast.makeText(PlaceOrderActivity.this,title.getText().toString(),Toast.LENGTH_LONG).show();
+                                map.put("st_name", "母婴护理");
+
                                 //list=RequestService.postRequest(urlPath,map);
                                 InputStream inptStream = RequestService.postRequest(urlPath, map);
                                 String str=RequestService.dealResponseResult(inptStream);

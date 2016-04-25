@@ -29,7 +29,7 @@ import db.DBHelper;
  */
 public class LoginActivity  extends Activity {
    // private static String urlPath="http://115.200.18.5:8080/HouseKeeping/login.action";
-   private static String urlPath="http://192.168.47.1:8080/HouseKeeping/login.action";
+   private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
 
     private String NetResult="";
     private EditText usernameText;
@@ -60,7 +60,7 @@ public class LoginActivity  extends Activity {
                         progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"登录失败！",Toast.LENGTH_LONG).show();
                     }
-                    else{
+                    else {
                         progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"连接服务器失败！",Toast.LENGTH_LONG).show();
                     }
@@ -113,7 +113,7 @@ public class LoginActivity  extends Activity {
                             String username=usernameText.getText().toString();
                             String password=passwordText.getText().toString();
                             Map<String, String> map = new HashMap<String, String>();
-                            map.put("username", username);
+                            map.put("account", username);
                             map.put("password",password);
                             InputStream inptStream =RequestService.postRequest(urlPath, map);
                             result =RequestService.dealResponseResult(inptStream);

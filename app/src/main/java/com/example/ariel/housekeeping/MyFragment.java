@@ -34,7 +34,7 @@ public class MyFragment extends Fragment {
         TextView username=(TextView)view.findViewById(R.id.textView2);
 
     if(Data.getUsername()!="")
-        LoginBtn.setVisibility(View.INVISIBLE);
+        loginBtn.setVisibility(View.INVISIBLE);
         //设置监听
 
         //跳转到常用地址界面

@@ -16,7 +16,7 @@ public class OrderFragment extends Fragment {
     private Button waitTake;
     private Button waitConfirm;
     private Button waitEvaluate;
-
+    private Button register;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class OrderFragment extends Fragment {
         waitTake=(Button)view.findViewById(R.id.btn_wait_take);
         waitConfirm=(Button)view.findViewById(R.id.btn_wait_confirm);
         waitEvaluate=(Button)view.findViewById(R.id.btn_wait_evaluate);
-
+        register=(Button)view.findViewById(R.id.btn_reg);
         allOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +33,13 @@ public class OrderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent=new Intent(getActivity(),RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

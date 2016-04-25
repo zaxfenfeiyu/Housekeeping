@@ -21,6 +21,7 @@
         <activity android:name=".AllOrderActivity" />
         <activity android:name=".InformationActivity" />
         <activity android:name=".MoreSettingActivity" />
+        <activity android:name=".PlaceOrderActivity" />
 
 
         <activity

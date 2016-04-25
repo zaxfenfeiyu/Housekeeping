@@ -99,7 +99,8 @@
             android:text="母婴护理"
             android:layout_weight="1"
             android:background="@drawable/button_main"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:id="@+id/muying" />
     </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"
