@@ -49,3 +49,7 @@
 ###2016/4/23 by Disagree
 
 修改了PlaceOrderActivity.java和activity_order_yuesao.xml，添加了rightarrow.png图片
+
+###2016/4/25 by Disagree
+
+完善了PlaceOrderActivity.java和activity_order_muying.xml，将Servicecatalog中price改为double类型（因为Object没有getFloat方法）

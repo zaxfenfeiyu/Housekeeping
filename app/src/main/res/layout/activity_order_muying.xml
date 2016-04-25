@@ -188,8 +188,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/money"
+
             android:id="@+id/textView8"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:text="总金额："
+            android:textSize="20sp"
+            android:textColor="@color/peach" />
 
         <Button
             style="?android:attr/buttonStyleSmall"

@@ -115,8 +115,8 @@ public class LoginActivity  extends Activity {
                             Map<String, String> map = new HashMap<String, String>();
                             map.put("username", username);
                             map.put("password",password);
-                            result=RequestService.postRequest(urlPath,map);
-
+                            InputStream inptStream =RequestService.postRequest(urlPath, map);
+                            result =RequestService.dealResponseResult(inptStream);
                             handler2.sendEmptyMessage(0);
 
                         } catch (Exception e) {

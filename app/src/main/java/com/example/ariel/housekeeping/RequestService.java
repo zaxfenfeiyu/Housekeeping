@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.ariel.housekeeping.entity.ProviderEntity;
 import com.example.ariel.housekeeping.entity.ResidentEntity;
+import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -128,6 +129,24 @@ public class RequestService {
             JSONObject object = array.getJSONObject(i);
             residentEntity = new ResidentEntity( object.getString("account"),object.getString("realname"),object.getString("address"),object.getString("phone"));
             list.add(residentEntity);
+        }
+        return list;
+    }
+    /**
+     * 将json数据转化成ServicecatalogEntity
+     * @param str
+     * @return ServicecatalogEntity的List
+     * @throws Exception
+     */
+    public static List<ServicecatalogEntity> servicecatalogJSON(String str)throws Exception{
+        List<ServicecatalogEntity> list = new ArrayList<ServicecatalogEntity>();
+        ServicecatalogEntity servicecatalogEntity = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for(int i=0;i<length;i++){
+            JSONObject object = array.getJSONObject(i);
+            servicecatalogEntity = new ServicecatalogEntity(object.getString("name"),object.getDouble("price"));
+            list.add(servicecatalogEntity);
         }
         return list;
     }
