@@ -71,18 +71,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="家政服务公司"
                         android:textSize="20sp"
                         android:textColor="@color/red2"
-                        android:id="@+id/textView26"
+                        android:id="@+id/text_provider_name"
                         android:gravity="bottom" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,9 +89,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="地板清洁上门服务"
                     android:textColor="@color/red"
-                    android:id="@+id/textView27"
+                    android:id="@+id/text_st_sc"
                     android:layout_weight="1"
                     android:textSize="25sp" />
 
@@ -109,35 +102,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="合计：￥#%%"
-                android:textSize="20sp"
-                android:textColor="@color/red2"
-                android:id="@+id/textView35"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合计：￥"
+                    android:textSize="20sp"
+                    android:textColor="@color/red2"
+                    android:id="@+id/textView35"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/red2"
+                    android:id="@+id/text_price"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </TableRow>
+
         </RelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="市场参考价："
-            android:textColor="@color/red"
-            android:layout_weight="1"
-            android:textSize="20sp"
-            android:id="@+id/textView34" />
     </LinearLayout>
 
     <LinearLayout
@@ -147,56 +142,138 @@
         android:background="@android:color/white"
         android:layout_marginTop="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="联系人："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView28"
-            android:layout_marginTop="10dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="联系电话："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView29"
-            android:layout_marginTop="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系人："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView19"
+                android:layout_marginTop="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="服务时间："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView30"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="服务地址："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView31"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下单时间："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView32"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="留言："
-            android:textSize="20sp"
-            android:textColor="@color/red2"
-            android:id="@+id/textView33"
-            android:layout_marginTop="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_resident_name"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系电话："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView20"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_resident_phone"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务时间："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView38"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_service_time"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务地址："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView42"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_address"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下单时间："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView44"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_place_time"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="留言："
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/textView29"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/red2"
+                android:id="@+id/text_message"
+                android:layout_marginTop="10dp" />
+        </TableRow>
+
     </LinearLayout>
 
     <LinearLayout
@@ -209,10 +286,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="投诉"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="@color/red"
             android:background="@drawable/buton_style"
-            android:id="@+id/button18" />
+            android:id="@+id/btn_complain" />
     </LinearLayout>
 
 </LinearLayout>

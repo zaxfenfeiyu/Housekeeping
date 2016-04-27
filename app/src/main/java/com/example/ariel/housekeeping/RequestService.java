@@ -4,9 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.example.ariel.housekeeping.entity.OrderDetail2;
 import com.example.ariel.housekeeping.entity.ProviderEntity;
 import com.example.ariel.housekeeping.entity.ResidentEntity;
 import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
+import com.example.ariel.housekeeping.entity.TotalOrder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -167,7 +169,7 @@ public class RequestService {
         try {
             URL picurl = new URL(url);
             // 获得连接
-            HttpURLConnection conn = (HttpURLConnection)picurl.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) picurl.openConnection();
             conn.setConnectTimeout(6000);//设置超时
             conn.setDoInput(true);
             conn.setUseCaches(false);//不缓存
@@ -180,5 +182,45 @@ public class RequestService {
         }
         return img;
     }
+
+    /**
+     * 将json数据转化成TotalOrder
+     *
+     * @param str
+     * @return TotalOrder的list
+     * @throws Exception
+     */
+    public static List<TotalOrder> totalOrderJSON(String str) throws Exception {
+        List<TotalOrder> list = new ArrayList<TotalOrder>();
+        TotalOrder totalOrder = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for (int i = 0; i < length; i++) {
+            JSONObject object = array.getJSONObject(i);
+            totalOrder = new TotalOrder(object.getInt("id"), object.getString("pro_name"), object.getString("st_sc_name"), object.getString("state"));
+            list.add(totalOrder);
+        }
+        return list;
+    }
+
+    /**
+     * 将json数据转化成OrderDetail2
+     * @param str
+     * @return OrderDetail2对象
+     * @throws Exception
+     */
+    public static List<OrderDetail2> orderDetailJSON(String str) throws Exception {
+        List<OrderDetail2> list = new ArrayList<OrderDetail2>();
+        OrderDetail2 orderDetail2 = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for (int i = 0; i < length; i++) {
+            JSONObject object = array.getJSONObject(i);
+            orderDetail2 = new OrderDetail2(object.getInt("id"), object.getString("pro_name"), object.getString("st_sc_name"), object.getDouble("price"), object.getString("re_name"), object.getString("re_phone"), object.getString("service_time"), object.getString("place_time"), object.getString("address"), object.getString("message"));
+            list.add(orderDetail2);
+        }
+        return list;
+    }
+
 
 }

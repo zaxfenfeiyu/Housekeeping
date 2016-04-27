@@ -49,8 +49,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     String message;
     int scID;
     double price;
-    String urlPath1 = "http://115.200.60.143:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://115.200.60.143:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://115.200.28.77:8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://115.200.28.77:8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;
@@ -144,7 +144,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear,
                                           int dayOfMonth) {
-                        date = year + "-" + (monthOfYear > 10 ? monthOfYear : "0" + monthOfYear) + "-" + (dayOfMonth > 10 ? dayOfMonth : "0" + dayOfMonth);
+                        monthOfYear++;
+                        date = year + "-" + (monthOfYear > 9 ? monthOfYear : "0" + monthOfYear) + "-" + (dayOfMonth > 9 ? dayOfMonth : "0" + dayOfMonth);
                         DateBtn.setText(date);
                     }
                 }, year, month, day).show();
@@ -160,7 +161,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                         calendar.setTimeInMillis(System.currentTimeMillis());
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
-                        time = (hourOfDay > 10 ? hourOfDay : "0" + hourOfDay) + ":" + (minute > 10 ? minute : "0" + minute) + ":00";
+                        time = (hourOfDay > 9 ? hourOfDay : "0" + hourOfDay) + ":" + (minute > 9 ? minute : "0" + minute) + ":00";
                         TimeBtn.setText(time);
                     }
                 }, hour, minute, true).show();

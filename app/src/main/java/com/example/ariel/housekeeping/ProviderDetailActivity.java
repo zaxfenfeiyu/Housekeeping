@@ -1,6 +1,7 @@
 package com.example.ariel.housekeeping;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,15 +30,18 @@ public class ProviderDetailActivity extends Activity {
     private TextView rankText;
     private Button submitBtn;
     private String returnRes;
-    private String urlPath="http://115.200.60.143:8080/HouseKeeping/placeOrder.action";
+    private String urlPath="http://115.200.28.77:8080/HouseKeeping/placeOrder.action";
+    private ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
+                    progressDialog.dismiss();
                     if(returnRes.equals("succeed")){
                         Toast.makeText(getApplicationContext(), "下单成功!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ProviderDetailActivity.this,MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else{
                         Toast.makeText(getApplicationContext(), "服务器错误!", Toast.LENGTH_SHORT).show();
@@ -67,6 +71,8 @@ public class ProviderDetailActivity extends Activity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog = ProgressDialog.show(ProviderDetailActivity.this,"","正在下单，请稍后");
+                progressDialog.setCancelable(true);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

@@ -37,7 +37,6 @@ public class ProviderActivity extends Activity {
         list = (List<ProviderEntity>) intent.getSerializableExtra("plist");
         orderDetail = (OrderDetail) intent.getSerializableExtra("orderDetail");
         pca=new ProviderCompanyAdapter(getApplicationContext(),list);
-        Toast.makeText(getApplicationContext(), "size=" +list.size(), Toast.LENGTH_SHORT).show();
         listView.setAdapter(pca);
         listView.setOnItemClickListener(itemListener);
     }
@@ -47,7 +46,6 @@ public class ProviderActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             ProviderEntity pe=(ProviderEntity)parent.getItemAtPosition(position);
             pro_id=pe.getId();
-            Toast.makeText(getApplicationContext(), "选择的供应商为：" +pro_id, Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(ProviderActivity.this,ProviderDetailActivity.class);
             intent.putExtra("provider",pe);
             intent.putExtra("orderDetail", orderDetail);

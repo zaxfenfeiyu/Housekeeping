@@ -24,6 +24,7 @@
         <activity android:name=".PlaceOrderActivity" />
         <activity android:name=".ProviderActivity" />
         <activity android:name=".ProviderDetailActivity" />
+        <activity android:name=".OrderDetailActivity" />
 
 
 

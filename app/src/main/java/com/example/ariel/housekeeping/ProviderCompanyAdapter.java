@@ -37,7 +37,7 @@ public class ProviderCompanyAdapter extends BaseAdapter {
     private Bitmap bitmap;
     private String pictureUrl;
     private  Drawable drawable;
-    String urlPath1 = "http://115.200.60.143:8080/HouseKeeping/permit/";
+    String urlPath1 = "http://192.168.155.1:8080/HouseKeeping/permit/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
