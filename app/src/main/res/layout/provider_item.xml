@@ -10,10 +10,9 @@
         android:layout_marginTop="10dp" >
 
         <ImageView
-            android:src="@drawable/pic2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/imageView4" />
+            android:id="@+id/picture" />
 
         <LinearLayout
             android:orientation="vertical"

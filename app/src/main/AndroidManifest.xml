@@ -22,6 +22,9 @@
         <activity android:name=".InformationActivity" />
         <activity android:name=".MoreSettingActivity" />
         <activity android:name=".PlaceOrderActivity" />
+        <activity android:name=".ProviderActivity" />
+        <activity android:name=".ProviderDetailActivity" />
+
 
 
         <activity

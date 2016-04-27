@@ -30,7 +30,7 @@
             android:id="@+id/textView"
             android:autoText="false"
             android:background="@drawable/button_shape"
-            android:text="好月嫂服务公司"
+            android:text="服务供应商"
             android:gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
