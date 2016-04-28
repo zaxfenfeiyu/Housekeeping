@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+
+        >
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/picture" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/picture"
+            android:layout_gravity="center"
+            />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp" >
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            >
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/providerName"
+                android:id="@+id/catalogName"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:gravity="center_vertical"
-                android:textColor="#ffffff" />
+                android:textColor="#000000"
+                />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评分："
-                android:id="@+id/providerRank"
+                android:text="价格："
+                android:id="@+id/price"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:gravity="center_vertical" />
+
+                android:textColor="#000000"
+                />
 
         </LinearLayout>
     </LinearLayout>

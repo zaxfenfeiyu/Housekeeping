@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ServicecatalogAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<ServicecatalogEntity> list;
+
 
     public ServicecatalogAdapter(Context c, List<ServicecatalogEntity>list) {
         this.list=list;
@@ -40,12 +42,15 @@ public class ServicecatalogAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView=inflater.inflate(R.layout.provider_item,null);
+        convertView=inflater.inflate(R.layout.catalog_item,null);
         ServicecatalogEntity pe=(ServicecatalogEntity)getItem(position);
-        TextView name=(TextView)convertView.findViewById(R.id.providerName);
-        TextView rank=(TextView)convertView.findViewById(R.id.providerRank);
+        TextView name=(TextView)convertView.findViewById(R.id.catalogName);
+        TextView price=(TextView)convertView.findViewById(R.id.price);
         name.setText(pe.getName());
-        rank.setText(""+pe.getPrice());
+        price.setText(price.getText().toString()+pe.getPrice());
+        ImageView icon=(ImageView)convertView.findViewById(R.id.picture);
+        icon.setImageResource(R.drawable.spa_black_24dp);
+
         return convertView;
     }
 
