@@ -36,7 +36,7 @@ public class AllOrderActivity extends Activity {
     private int order_id;
     private ProgressDialog progressDialog;
     private AllOrderAdapter aoa;
-    private String urlPath = "http://115.200.28.77:8080/HouseKeeping/";
+    private String urlPath = "http://115.200.19.98:8080/HouseKeeping/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -111,7 +111,7 @@ public class AllOrderActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             TotalOrder to = (TotalOrder) parent.getItemAtPosition(position);
             order_id = to.getId();
-            Intent intent = new Intent(AllOrderActivity.this, ProviderDetailActivity.class);
+            Intent intent = new Intent(AllOrderActivity.this, OrderDetailActivity.class);
             intent.putExtra("order_id", order_id);
             startActivity(intent);
         }

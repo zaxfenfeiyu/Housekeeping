@@ -49,8 +49,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     String message;
     int scID;
     double price;
-    String urlPath1 = "http://115.200.28.77:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://115.200.28.77:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://115.200.19.98:8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://115.200.19.98:8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;

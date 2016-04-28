@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import java.util.Map;
  * Created by ariel on 2016/4/27.
  */
 public class OrderDetailActivity extends Activity {
-    private  int order_id;
+    private int order_id;
     private TextView proNameText;
     private TextView stscNameText;
     private TextView priceText;
@@ -31,15 +32,17 @@ public class OrderDetailActivity extends Activity {
     private TextView placeTimeText;
     private TextView messageText;
     private Button complainBtn;
+    private Button remarkBtn;
+    private Button confirmBtn;
     private List<OrderDetail2> list;
 
-    private String urlPath="http://115.200.19.98:8080/HouseKeeping/orderDetail.action";
+    private String urlPath = "http://115.200.19.98:8080/HouseKeeping/orderDetail.action";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    if(list.size()>0){
-                        OrderDetail2 od=list.get(0);
+                    if (list.size() > 0) {
+                        OrderDetail2 od = list.get(0);
                         proNameText.setText(od.getPro_name());
                         stscNameText.setText(od.getStsc_name());
                         priceText.setText(String.valueOf(od.getPrice()));
@@ -62,36 +65,39 @@ public class OrderDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
 
-        proNameText=(TextView)findViewById(R.id.text_provider_name) ;
-        stscNameText=(TextView)findViewById(R.id.text_st_sc) ;
-        priceText=(TextView)findViewById(R.id.text_price) ;
-        resNameText=(TextView)findViewById(R.id.text_resident_name) ;
-        phoneText=(TextView)findViewById(R.id.text_resident_phone) ;
-        serviceTimeText=(TextView)findViewById(R.id.text_service_time) ;
-        addressText=(TextView)findViewById(R.id.text_address) ;
-        placeTimeText=(TextView)findViewById(R.id.text_place_time) ;
-        messageText=(TextView)findViewById(R.id.text_message) ;
-        complainBtn=(Button)findViewById(R.id.btn_complain);
-
-        Intent intent=getIntent();
-        order_id=intent.getIntExtra("order_id",0);
+        proNameText = (TextView) findViewById(R.id.text_provider_name);
+        stscNameText = (TextView) findViewById(R.id.text_st_sc);
+        priceText = (TextView) findViewById(R.id.text_price);
+        resNameText = (TextView) findViewById(R.id.text_resident_name);
+        phoneText = (TextView) findViewById(R.id.text_resident_phone);
+        serviceTimeText = (TextView) findViewById(R.id.text_service_time);
+        addressText = (TextView) findViewById(R.id.text_address);
+        placeTimeText = (TextView) findViewById(R.id.text_place_time);
+        messageText = (TextView) findViewById(R.id.text_message);
+        complainBtn = (Button) findViewById(R.id.btn_complain);
+        remarkBtn = (Button) findViewById(R.id.btn_remark);
+        confirmBtn = (Button) findViewById(R.id.btn_confirm);
+        complainBtn.setOnClickListener(BtnListener);
+        remarkBtn.setOnClickListener(BtnListener);
+        confirmBtn.setOnClickListener(BtnListener);
+        Intent intent = getIntent();
+        order_id = intent.getIntExtra("order_id", 0);
         getOrderDetail();
     }
 
-    public void getOrderDetail(){
+    public void getOrderDetail() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
-                    map.put("order_id",String.valueOf(order_id));
+                    map.put("order_id", String.valueOf(order_id));
                     InputStream inputStream = RequestService.postRequest(urlPath, map);
-                    if(inputStream==null){
+                    if (inputStream == null) {
                         handler.sendEmptyMessage(-1);
-                    }
-                    else{
-                        String str=RequestService.dealResponseResult(inputStream);
-                        list=RequestService.orderDetailJSON(str);
+                    } else {
+                        String str = RequestService.dealResponseResult(inputStream);
+                        list = RequestService.orderDetailJSON(str);
                         handler.sendEmptyMessage(0);
                     }
                 } catch (Exception e) {
@@ -100,4 +106,23 @@ public class OrderDetailActivity extends Activity {
             }
         }).start();
     }
+
+    private Button.OnClickListener BtnListener = new Button.OnClickListener() {
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_complain:
+
+                    break;
+                case R.id.btn_remark:
+                    Intent intent =new Intent(OrderDetailActivity.this,RemarkActivity.class);
+                    intent.putExtra("order_id",order_id);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case R.id.btn_confirm:
+
+                    break;
+            }
+        }
+    };
 }
