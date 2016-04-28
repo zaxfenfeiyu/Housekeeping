@@ -78,6 +78,7 @@ public class AllOrderActivity extends Activity {
         action=intent.getStringExtra("tag");
         title=intent.getStringExtra("title");
         titleText.setText(title);
+        //
         getAllOrder();
     }
 
