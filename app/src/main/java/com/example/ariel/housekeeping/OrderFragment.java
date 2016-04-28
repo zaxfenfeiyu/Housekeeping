@@ -24,6 +24,7 @@ public class OrderFragment extends Fragment {
     private Button waitTake;
     private Button waitConfirm;
     private Button waitEvaluate;
+    private Button completed;
     private ProgressDialog progressDialog;
 
     @Override
@@ -34,14 +35,58 @@ public class OrderFragment extends Fragment {
         waitTake=(Button)view.findViewById(R.id.btn_wait_take);
         waitConfirm=(Button)view.findViewById(R.id.btn_wait_confirm);
         waitEvaluate=(Button)view.findViewById(R.id.btn_wait_evaluate);
+        completed=(Button)view.findViewById(R.id.btn_completed);
         allOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
+                intent.putExtra("title","全部订单");
+                intent.putExtra("tag","getAllOrder.action");
+                startActivity(intent);
+            }
+        });
+        waitTake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),AllOrderActivity.class);
+                intent.putExtra("title","待接单订单");
+                intent.putExtra("tag","getWaitTakeOrder.action");
+                startActivity(intent);
+            }
+        });
+        waitConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),AllOrderActivity.class);
+                intent.putExtra("title","待确认订单");
+                intent.putExtra("tag","getWaitConfirmOrder.action");
+                startActivity(intent);
+            }
+        });
+        waitEvaluate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),AllOrderActivity.class);
+                intent.putExtra("title","待评价订单");
+                intent.putExtra("tag","getWaitRemarkOrder.action");
+                startActivity(intent);
+            }
+        });
+        completed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),AllOrderActivity.class);
+                intent.putExtra("title","已完成订单");
+                intent.putExtra("tag","getCompletedOrder.action");
                 startActivity(intent);
             }
         });
         return view;
     }
+
 }

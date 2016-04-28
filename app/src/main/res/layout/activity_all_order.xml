@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textView"
+            android:id="@+id/text_title"
             android:autoText="false"
             android:background="@drawable/button_shape"
             android:text="全部订单"
@@ -44,11 +44,24 @@
         android:id="@+id/scrollView3"
         android:fillViewport="true">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/order_listView"
-            android:fastScrollEnabled="false" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/order_listView"
+                android:fastScrollEnabled="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="还没有相关订单"
+                android:id="@+id/text_no_data"
+                android:layout_gravity="center"
+                android:textSize="30sp" />
+        </FrameLayout>
     </ScrollView>
 
 </LinearLayout>

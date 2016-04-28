@@ -106,4 +106,23 @@
             android:layout_alignBottom="@+id/textView6" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="已完成订单"
+            android:id="@+id/btn_completed"
+            android:background="@drawable/buton_style"
+            android:textColor="@color/peach"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/textView6" />
+    </RelativeLayout>
+
 </LinearLayout>

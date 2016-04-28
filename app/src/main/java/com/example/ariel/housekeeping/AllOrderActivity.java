@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ariel.housekeeping.entity.ProviderEntity;
@@ -27,19 +28,28 @@ import java.util.Map;
 public class AllOrderActivity extends Activity {
     private ImageButton returnBtn;
     private ListView listView;
+    private TextView noData;
+    private TextView titleText;
+    private String title;
+    private String action;
     private List<TotalOrder> list;
     private int order_id;
     private ProgressDialog progressDialog;
     private AllOrderAdapter aoa;
-    private String urlPath="http://115.200.28.77:8080/HouseKeeping/getAllOrder.action";
+    private String urlPath = "http://115.200.28.77:8080/HouseKeeping/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
                     progressDialog.dismiss();
-                    aoa=new AllOrderAdapter(getApplicationContext(),list);
-                    listView.setAdapter(aoa);
-                    listView.setOnItemClickListener(itemListener);
+                    if (list.isEmpty()) {
+
+                    } else {
+                        aoa = new AllOrderAdapter(getApplicationContext(), list);
+                        listView.setAdapter(aoa);
+                        listView.setOnItemClickListener(itemListener);
+                    }
+
                     break;
 
                 case -1:
@@ -53,34 +63,39 @@ public class AllOrderActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_order);
-
-        returnBtn=(ImageButton)findViewById(R.id.btn_all_order_return);
+        noData=(TextView)findViewById(R.id.text_no_data) ;
+        titleText=(TextView)findViewById(R.id.text_title) ;
+        returnBtn = (ImageButton) findViewById(R.id.btn_all_order_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        listView=(ListView)findViewById(R.id.order_listView) ;
+        listView = (ListView) findViewById(R.id.order_listView);
+        listView.setEmptyView(noData);
+        Intent intent=getIntent();
+        action=intent.getStringExtra("tag");
+        title=intent.getStringExtra("title");
+        titleText.setText(title);
         getAllOrder();
     }
 
-    public void getAllOrder(){
-        progressDialog = ProgressDialog.show(AllOrderActivity.this,"","正在获取，请稍后");
+    public void getAllOrder() {
+        progressDialog = ProgressDialog.show(AllOrderActivity.this, "", "正在获取，请稍后");
         progressDialog.setCancelable(true);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
-                    map.put("re_id","1");
-                    InputStream inputStream = RequestService.postRequest(urlPath, map);
-                    if(inputStream==null){
+                    map.put("re_id", "1");
+                    InputStream inputStream = RequestService.postRequest(urlPath+action, map);
+                    if (inputStream == null) {
                         handler.sendEmptyMessage(-1);
-                    }
-                    else{
-                        String str=RequestService.dealResponseResult(inputStream);
-                        list=RequestService.totalOrderJSON(str);
+                    } else {
+                        String str = RequestService.dealResponseResult(inputStream);
+                        list = RequestService.totalOrderJSON(str);
                         handler.sendEmptyMessage(0);
                     }
                 } catch (Exception e) {
@@ -90,13 +105,13 @@ public class AllOrderActivity extends Activity {
         }).start();
     }
 
-    private ListView.OnItemClickListener itemListener=new ListView.OnItemClickListener(){
+    private ListView.OnItemClickListener itemListener = new ListView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            TotalOrder to=(TotalOrder)parent.getItemAtPosition(position);
-            order_id=to.getId();
-            Intent intent=new Intent(AllOrderActivity.this,ProviderDetailActivity.class);
-            intent.putExtra("order_id",order_id);
+            TotalOrder to = (TotalOrder) parent.getItemAtPosition(position);
+            order_id = to.getId();
+            Intent intent = new Intent(AllOrderActivity.this, ProviderDetailActivity.class);
+            intent.putExtra("order_id", order_id);
             startActivity(intent);
         }
     };
