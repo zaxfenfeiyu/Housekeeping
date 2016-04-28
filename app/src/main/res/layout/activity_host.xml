@@ -29,9 +29,10 @@
 
     </RelativeLayout>
 
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="139dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="139dp"
+        android:orientation="vertical">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
@@ -52,7 +53,7 @@
                 android:orientation="horizontal" >
             </LinearLayout>
         </RelativeLayout>
-    </TableRow>
+    </FrameLayout>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
