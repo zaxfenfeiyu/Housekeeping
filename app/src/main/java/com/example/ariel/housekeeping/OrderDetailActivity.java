@@ -33,7 +33,7 @@ public class OrderDetailActivity extends Activity {
     private Button complainBtn;
     private List<OrderDetail2> list;
 
-    private String urlPath="http://115.200.28.77:8080/HouseKeeping/orderDetail.action";
+    private String urlPath="http://115.200.19.98:8080/HouseKeeping/orderDetail.action";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {

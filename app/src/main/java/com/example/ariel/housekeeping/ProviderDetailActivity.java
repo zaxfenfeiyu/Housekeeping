@@ -30,7 +30,7 @@ public class ProviderDetailActivity extends Activity {
     private TextView rankText;
     private Button submitBtn;
     private String returnRes;
-    private String urlPath="http://192.168.134.1:8080/HouseKeeping/placeOrder.action";
+    private String urlPath="http://115.200.28.77:8080/HouseKeeping/placeOrder.action";
     private ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {

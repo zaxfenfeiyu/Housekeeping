@@ -46,7 +46,7 @@ public class RequestService {
         outputStream.write(data);
         //状态码是不成功
         int response = httpURLConnection.getResponseCode();            //获得服务器的响应码
-
+        Log.e("response", "response=" + response);
         if (response == HttpURLConnection.HTTP_OK) {
             InputStream inputStream = httpURLConnection.getInputStream();
             return inputStream;   //处理服务器的响应结果
@@ -216,7 +216,7 @@ public class RequestService {
         int length = array.length();
         for (int i = 0; i < length; i++) {
             JSONObject object = array.getJSONObject(i);
-            orderDetail2 = new OrderDetail2(object.getInt("id"), object.getString("pro_name"), object.getString("st_sc_name"), object.getDouble("price"), object.getString("re_name"), object.getString("re_phone"), object.getString("service_time"), object.getString("place_time"), object.getString("address"), object.getString("message"));
+            orderDetail2 = new OrderDetail2(object.getInt("id"), object.getString("pro_name"), object.getString("stsc_name"), object.getDouble("price"), object.getString("re_name"), object.getString("re_phone"), object.getString("service_time"), object.getString("place_time"), object.getString("address"), object.getString("message"));
             list.add(orderDetail2);
         }
         return list;

@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@color/white"
         android:layout_marginTop="10dp">
 
         <RelativeLayout
@@ -29,7 +29,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="30sp"
                         android:textColor="@color/red2"
                         android:id="@+id/text_provider_name" />
                 </LinearLayout>
@@ -62,16 +62,18 @@
             android:layout_margin="10dp">
 
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/red2"
                 android:id="@+id/text_order_state"
                 android:background="@drawable/buton_style"
+                android:textSize="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:textSize="20dp" />
+                android:layout_marginRight="32dp"
+                android:layout_marginEnd="32dp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
