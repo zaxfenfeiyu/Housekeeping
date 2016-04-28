@@ -24,6 +24,8 @@ public class MainActivity extends FragmentActivity {
     private FragmentTabHost mTabHost;
     private LayoutInflater mLayoutInflater;
     private static boolean isExit = false;
+    private List<ProviderEntity> providerEntities;
+    private String urlPath = "http://192.168.134.1:8080/HouseKeeping/getAll.action";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
