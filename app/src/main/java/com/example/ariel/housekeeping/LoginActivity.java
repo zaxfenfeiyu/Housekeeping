@@ -50,7 +50,9 @@ public class LoginActivity  extends Activity {
                         SQLiteDatabase db=dbhelper.getWritableDatabase();
                         db.execSQL("INSERT INTO resident VALUES (?, ?, ?, ?, ?, ?, ?)",
                                 new Object[]{null,usernameText.getText(), passwordText.getText(),null,null,null,null});
+                        //设置全局变量
                         Data.setUsername(usernameText.getText().toString());
+                        Data.setIfLogin(true);
                         Intent intent = new Intent();
                         intent.setClass(LoginActivity.this, MainActivity.class);
                         startActivity(intent);

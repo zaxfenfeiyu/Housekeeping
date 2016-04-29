@@ -36,7 +36,7 @@ public class AllOrderActivity extends Activity {
     private int order_id;
     private ProgressDialog progressDialog;
     private AllOrderAdapter aoa;
-    private String urlPath="http://192.168.134.1:8080/HouseKeeping/getAllOrder.action";
+    private String urlPath="http://192.168.134.1:8080/HouseKeeping/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -90,7 +90,7 @@ public class AllOrderActivity extends Activity {
             public void run() {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
-                    map.put("re_id", "1");
+                    map.put("re_account", Data.getUsername());
                     InputStream inputStream = RequestService.postRequest(urlPath+action, map);
                     if (inputStream == null) {
                         handler.sendEmptyMessage(-1);

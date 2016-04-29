@@ -39,7 +39,11 @@ public class OrderFragment extends Fragment {
         allOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 intent.putExtra("title","全部订单");
                 intent.putExtra("tag","getAllOrder.action");
