@@ -28,9 +28,11 @@ public class RemarkActivity extends Activity {
     private String remark;
     private Button submit;
     private int order_id;
+    private String proName;
     private float rank = 0;
     private String result;
-    private String urlPath = "http://115.200.19.98:8080/HouseKeeping/remarkOrder.acton";
+    //private String urlPath = "http://115.200.19.98:8080/HouseKeeping/remarkOrder.action";
+    private String urlPath = "http://192.168.2.105:8080/HouseKeeping/remarkOrder.action";
     ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -57,9 +59,11 @@ public class RemarkActivity extends Activity {
         setContentView(R.layout.activity_remark);
         Intent intent = getIntent();
         order_id = intent.getIntExtra("order_id", 0);
+        proName=intent.getStringExtra("pro_name");
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.setOnRatingBarChangeListener(new RatingBarChangeListener());
         proNameText = (TextView) findViewById(R.id.tetx_provider_name);
+        proNameText.setText(proName);
         remarkEdit = (EditText) findViewById(R.id.edit_remark);
         submit = (Button) findViewById(R.id.btn_submit_remark);
         submit.setOnClickListener(new View.OnClickListener() {

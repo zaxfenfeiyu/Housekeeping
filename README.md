@@ -42,9 +42,13 @@
 
 添加了订单中心——全部订单页面的跳转和返回
 
-###2016/4/23 by Ariel
+###2016/4/22 by Disagree
 
 在LoginActivity中添加了progressDialog，在MyFragment中添加了显示用户名，并且当用户登录时登录按钮取消。添加了DBManager.java。在LoginActivity中，登录成功后将数据添加到本地数据库中
+
+###2016/4/22 by Ariel
+
+完成了下单功能
 
 ###2016/4/23 by Disagree
 
@@ -53,3 +57,31 @@
 ###2016/4/25 by Disagree
 
 完善了PlaceOrderActivity.java和activity_order_muying.xml，将Servicecatalog中price改为double类型（因为Object没有getFloat方法）
+
+###2016/4/26 by Ariel
+
+完成了下单显示供应商列表，并且点击查看供应商详情，并且点击下单的功能
+
+###2016/4/29 by Ariel
+
+增加了主页返回键的监听，即按两次返回键才能退出程序
+
+实现了订单的评价功能
+
+###2016/4/30 by Ariel
+
+修复了登录后等页面按返回键会跳转到未登录的页面的bug，即在每次跳转到主页的intent中添加 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);语句即可
+
+增加了主页8个功能按键的监听，完成了其跳转到下单页面
+
+增加了订单页面的5个监听，并且按状态显示待评价和待确认两个按钮
+
+完善了订单的评价功能，并且自定义了ratingBar的样式
+
+实现了订单的确认功能
+
+
+
+
+
+

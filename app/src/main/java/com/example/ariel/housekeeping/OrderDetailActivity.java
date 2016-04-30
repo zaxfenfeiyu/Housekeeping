@@ -1,6 +1,8 @@
 package com.example.ariel.housekeeping;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +24,7 @@ import java.util.Map;
  */
 public class OrderDetailActivity extends Activity {
     private int order_id;
+    private String state;
     private TextView proNameText;
     private TextView stscNameText;
     private TextView priceText;
@@ -34,9 +37,14 @@ public class OrderDetailActivity extends Activity {
     private Button complainBtn;
     private Button remarkBtn;
     private Button confirmBtn;
+    private String resultRes;
     private List<OrderDetail2> list;
 
-    private String urlPath = "http://115.200.19.98:8080/HouseKeeping/orderDetail.action";
+    private String urlPath = "http://192.168.2.105:8080/HouseKeeping/orderDetail.action";
+    //private String urlPath = "http://192.168.2.105:8080/HouseKeeping/orderDetail.action";
+    private String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/confirmOrder.action";
+    //private String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/confirmOrder.action";
+
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -52,6 +60,18 @@ public class OrderDetailActivity extends Activity {
                         addressText.setText(od.getAddress());
                         placeTimeText.setText(od.getPlace_time());
                         messageText.setText(od.getMessage());
+                    }
+                    break;
+                case 1:
+                    if(resultRes.equals("succeed")){
+                        Toast.makeText(getApplicationContext(), "确认成功!", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(OrderDetailActivity.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "确认失败，请稍后再试", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case -1:
@@ -80,8 +100,16 @@ public class OrderDetailActivity extends Activity {
         complainBtn.setOnClickListener(BtnListener);
         remarkBtn.setOnClickListener(BtnListener);
         confirmBtn.setOnClickListener(BtnListener);
+        remarkBtn.setVisibility(View.INVISIBLE);
+        confirmBtn.setVisibility(View.INVISIBLE);
         Intent intent = getIntent();
         order_id = intent.getIntExtra("order_id", 0);
+        state = intent.getStringExtra("state");
+        if (state.equals("待确认")) {
+            confirmBtn.setVisibility(View.VISIBLE);
+        } else if (state.equals("待评价")) {
+            remarkBtn.setVisibility(View.VISIBLE);
+        }
         getOrderDetail();
     }
 
@@ -114,13 +142,38 @@ public class OrderDetailActivity extends Activity {
 
                     break;
                 case R.id.btn_remark:
-                    Intent intent =new Intent(OrderDetailActivity.this,RemarkActivity.class);
-                    intent.putExtra("order_id",order_id);
+                    Intent intent = new Intent(OrderDetailActivity.this, RemarkActivity.class);
+                    intent.putExtra("order_id", order_id);
+                    intent.putExtra("pro_name", proNameText.getText().toString().trim());
                     startActivity(intent);
                     finish();
                     break;
                 case R.id.btn_confirm:
-
+                    new AlertDialog.Builder(OrderDetailActivity.this).setMessage("是否确认完成")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                Map<String, String> map = new HashMap<String, String>();
+                                                map.put("order_id", String.valueOf(order_id));
+                                                InputStream inputStream = RequestService.postRequest(urlPath2, map);
+                                                if (inputStream == null) {
+                                                    handler.sendEmptyMessage(-1);
+                                                } else {
+                                                    resultRes = RequestService.dealResponseResult(inputStream);
+                                                    handler.sendEmptyMessage(1);
+                                                }
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            })
+                            .setNegativeButton("取消", null)
+                            .show();
                     break;
             }
         }

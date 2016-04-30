@@ -299,7 +299,8 @@
             android:id="@+id/btn_remark"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/btn_complain"
-            android:layout_toEndOf="@+id/btn_complain" />
+            android:layout_toEndOf="@+id/btn_complain"
+            android:visibility="invisible" />
 
         <Button
             android:layout_width="120dp"
@@ -311,7 +312,8 @@
             android:id="@+id/btn_confirm"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </LinearLayout>

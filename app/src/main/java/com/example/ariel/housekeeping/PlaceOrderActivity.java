@@ -49,8 +49,10 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     String message;
     int scID;
     double price;
-    String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/getSCProviders.action";
+//    String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
+//    String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://192.168.2.105:8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;
@@ -193,7 +195,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                             public void onClick(DialogInterface dialog, int which) {
                                 String input = et.getText().toString();
                                 if (!input.equals("")) {
-                                    AddressBtn.setText(input);
+                                    MessageBtn.setText(input);
                                 }
                             }
                         })

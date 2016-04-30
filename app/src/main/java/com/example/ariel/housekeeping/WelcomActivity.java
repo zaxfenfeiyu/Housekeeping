@@ -47,6 +47,6 @@ public class WelcomActivity extends AppCompatActivity {
                 WelcomActivity.this.finish();
             }
 
-        }, 2000);
+        }, 3000);
     }
 }

@@ -55,10 +55,23 @@
         android:id="@+id/scrollView"
         android:fillViewport="true">
 
-        <ListView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/providerListView" />
+            android:layout_height="match_parent">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/providerListView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂无服务商"
+                android:id="@+id/text_empty_provider"
+                android:layout_gravity="center"
+                android:textSize="30sp" />
+        </FrameLayout>
     </ScrollView>
 
 </LinearLayout>

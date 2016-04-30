@@ -17,7 +17,14 @@ import android.widget.LinearLayout;
  * Created by ariel on 2016/4/14.
  */
 public class HostFragment extends Fragment implements ViewPager.OnPageChangeListener {
-    Button btn_muying;
+    private Button btn_muying;
+    private Button btn_zhongdian;
+    private Button btn_baomu;
+    private Button btn_kanhu;
+    private Button btn_jiaoyu;
+    private Button btn_qingjie;
+    private Button btn_weixiu;
+    private Button btn_banjia;
     private ViewPager viewPager;
     private int currentItem; // 当前页面
     private int oldPosition = 0;// 记录上一次点的位置
@@ -46,6 +53,83 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("type", btn_muying.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_zhongdian = (Button) view.findViewById(R.id.zhongdian);
+        btn_zhongdian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_zhongdian.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_baomu = (Button) view.findViewById(R.id.baomu);
+        btn_baomu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_baomu.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_kanhu = (Button) view.findViewById(R.id.kanhu);
+        btn_kanhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_kanhu.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_jiaoyu = (Button) view.findViewById(R.id.jiaoyu);
+        btn_jiaoyu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_jiaoyu.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_qingjie = (Button) view.findViewById(R.id.qingjie);
+        btn_qingjie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_qingjie.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_weixiu = (Button) view.findViewById(R.id.weixiu);
+        btn_weixiu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_weixiu.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        btn_banjia = (Button) view.findViewById(R.id.banjia);
+        btn_banjia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", btn_banjia.getText().toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

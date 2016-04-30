@@ -28,8 +28,8 @@ import db.DBHelper;
  * Created by ariel on 2016/4/14.
  */
 public class LoginActivity  extends Activity {
-   // private static String urlPath="http://115.200.18.5:8080/HouseKeeping/login.action";
-   private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
+    private static String urlPath="http://192.168.2.105:8080/HouseKeeping/login.action";
+   //private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
 
     private String NetResult="";
     private EditText usernameText;
@@ -55,7 +55,9 @@ public class LoginActivity  extends Activity {
                         Data.setIfLogin(true);
                         Intent intent = new Intent();
                         intent.setClass(LoginActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                     }
                     else if(result.equals("fail"))
                     {
