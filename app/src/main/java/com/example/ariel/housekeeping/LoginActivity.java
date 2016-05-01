@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ariel.housekeeping.entity.ResidentEntity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import db.DBHelper;
@@ -32,6 +35,7 @@ public class LoginActivity  extends Activity {
    //private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
 
     private String NetResult="";
+    private List<ResidentEntity> list;
     private EditText usernameText;
     private EditText passwordText;
     private Button LoginBtn;
@@ -42,22 +46,24 @@ public class LoginActivity  extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    if(result.equals("fail"))
+                    if(result.equals("failed"))
                     {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this,"登录失败！",Toast.LENGTH_LONG).show();
                     }
                     else if(result!=null) {
+                        ResidentEntity residentEntity=list.get(0);
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this,"登录成功！",Toast.LENGTH_LONG).show();
                         //登录成功后将信息添加到本地数据库
                         DBHelper dbhelper=new DBHelper(LoginActivity.this);
                         SQLiteDatabase db=dbhelper.getWritableDatabase();
                         db.execSQL("INSERT INTO resident VALUES (?, ?, ?, ?, ?, ?, ?)",
-                                new Object[]{null,usernameText.getText(), passwordText.getText(),null,null,null,null});
+                                new Object[]{null,usernameText.getText(), passwordText.getText(),residentEntity.getRealname(),residentEntity.getAddress(),null,residentEntity.getPhone()});
                         //设置全局变量
-                        Data.setRe_id((result));
+                        Data.setRe_id(String.valueOf(residentEntity.getId()));
                         Data.setUsername(usernameText.getText().toString());
+                        Data.setAddress(residentEntity.getAddress());
                         Data.setIfLogin(true);
                         Intent intent = new Intent();
                         intent.setClass(LoginActivity.this, MainActivity.class);
@@ -123,8 +129,10 @@ public class LoginActivity  extends Activity {
                             map.put("password",password);
                             InputStream inptStream =RequestService.postRequest(urlPath, map);
                             result =RequestService.dealResponseResult(inptStream);
+                            if(!result.equals("failed")){
+                                list=RequestService.residentJSON(result);
+                            }
                             handler2.sendEmptyMessage(0);
-
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
