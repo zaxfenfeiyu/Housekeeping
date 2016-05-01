@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#dfcc0404</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="grey">#B5B5B5</color>
+    <color name="colorPrimary">#20adff</color>
+    <color name="colorPrimaryDark">#20adff</color>
+    <color name="colorAccent">#20adff</color>
+    <color name="grey">#b5b5b5</color>
     <color name="red">#FF4040</color>
     <color name="white">#ffffff</color>
     <color name="pink">#FFE4B5</color>
@@ -11,4 +11,11 @@
     <color name="peach">#ffc5b5</color>
     <color name="red2">#fdabb3</color>
     <color name="transparent">#00000000</color>
+    <color name="black">#000</color>
+    <color name="gray">#D0D0D0</color>
+    <color name="text_color_normal">#ff323a45</color>
+    <color name="black_button_normal">#000</color>
+    <color name="title_blue">#20adff</color>
+    <color name="primary_background">#e7f5fd</color>
+    <color name="dark_blue">#003656</color>
 </resources>

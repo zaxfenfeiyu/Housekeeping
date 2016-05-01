@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/pink"
+    android:background="@color/primary_background"
     android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red">
+        android:background="@color/title_blue">
 
         <ImageButton
             android:src="@drawable/back"
@@ -65,7 +65,7 @@
             android:gravity="center" >
 
             <ImageView
-                android:src="@drawable/pic2"
+                android:src="@mipmap/logo"
                 android:id="@+id/imageView23"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="公司简介"
                 android:textSize="25sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView41"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -110,11 +110,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:id="@+id/text_introduction"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:textSize="20sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:text="今天天气真好啊" />
 
         </LinearLayout>
 
@@ -134,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:text="联系电话："
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/textView36"
                     android:layout_marginTop="10dp" />
 
@@ -142,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/text_phone"
                     android:layout_marginTop="10dp" />
 
@@ -157,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:text="公司评分："
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/textView40"
                     android:layout_marginTop="10dp" />
 
@@ -165,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/text_rank"
                     android:layout_marginTop="10dp" />
 

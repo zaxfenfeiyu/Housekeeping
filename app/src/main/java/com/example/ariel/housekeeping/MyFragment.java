@@ -15,7 +15,6 @@ import android.widget.Toast;
  */
 public class MyFragment extends Fragment {
     private Button loginBtn;
-    private Button usualAddress;
     private Button perfectInformation;
 //    private Button  myCollection;
     private Button moreSetting;
@@ -27,7 +26,6 @@ public class MyFragment extends Fragment {
 
 
         loginBtn = (Button)view.findViewById(R.id.btn_login);
-        usualAddress=(Button)view.findViewById(R.id.btn_usual_address) ;
         perfectInformation=(Button)view.findViewById(R.id.btn_perfect_information) ;
 //        myCollection=(Button)view.findViewById(R.id.btn_my_collection) ;
         moreSetting=(Button)view.findViewById(R.id.btn_more_setting) ;
@@ -36,16 +34,6 @@ public class MyFragment extends Fragment {
     if(Data.getUsername()!="")
         loginBtn.setVisibility(View.INVISIBLE);
         //设置监听
-
-        //跳转到常用地址界面
-        usualAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),AddressActivity.class);
-                startActivity(intent);
-            }
-        });
-
         //跳转到完善个人信息页面
         perfectInformation.setOnClickListener(new View.OnClickListener() {
             @Override

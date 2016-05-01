@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/pink"
+    android:background="@color/primary_background"
     android:clickable="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red">
+        android:background="@color/title_blue">
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:text="请选择子分类"
                 android:id="@+id/btn_subclass"
                 android:background="@color/transparent"
-                android:textColor="@color/peach"
+                android:textColor="@color/title_blue"
                 android:textSize="20sp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
@@ -90,7 +90,7 @@
             android:text="请选择开始日期"
             android:id="@+id/btn_date"
             android:background="@color/transparent"
-            android:textColor="@color/peach"
+            android:textColor="@color/title_blue"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -117,7 +117,7 @@
             android:text="请选择开始时间"
             android:id="@+id/btn_time"
             android:background="@color/transparent"
-            android:textColor="@color/peach"
+            android:textColor="@color/title_blue"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -145,7 +145,7 @@
             android:text="请输入服务地址"
             android:id="@+id/btn_address"
             android:background="@color/transparent"
-            android:textColor="@color/peach"
+            android:textColor="@color/title_blue"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -173,7 +173,7 @@
             android:text="请输入服务留言"
             android:id="@+id/btn_message"
             android:background="@color/transparent"
-            android:textColor="@color/peach"
+            android:textColor="@color/title_blue"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -201,7 +201,7 @@
             android:text="使用优惠券"
             android:id="@+id/btn_coupon"
             android:background="@color/transparent"
-            android:textColor="@color/peach"
+            android:textColor="@color/title_blue"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -213,7 +213,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="30dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -224,22 +224,21 @@
             android:background="@color/white"
             android:text="总金额："
             android:textSize="20sp"
-            android:textColor="@color/peach" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="确认提交"
-            android:textSize="20sp"
-            android:textColor="@color/red"
-            android:id="@+id/btn_submit"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:background="@color/transparent"
-            android:layout_alignBottom="@+id/text_totalMoney" />
+            android:textColor="@color/title_blue" />
 
     </RelativeLayout>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认提交"
+        android:background="@drawable/button_shape"
+        android:id="@+id/btn_submit"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

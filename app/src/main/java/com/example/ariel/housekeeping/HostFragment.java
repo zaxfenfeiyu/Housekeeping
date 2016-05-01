@@ -12,19 +12,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by ariel on 2016/4/14.
  */
 public class HostFragment extends Fragment implements ViewPager.OnPageChangeListener {
-    private Button btn_muying;
-    private Button btn_zhongdian;
-    private Button btn_baomu;
-    private Button btn_kanhu;
-    private Button btn_jiaoyu;
-    private Button btn_qingjie;
-    private Button btn_weixiu;
-    private Button btn_banjia;
+    private TextView btn_muying;
+    private TextView btn_zhongdian;
+    private TextView btn_baomu;
+    private TextView btn_kanhu;
+    private TextView btn_jiaoyu;
+    private TextView btn_qingjie;
+    private TextView btn_weixiu;
+    private TextView btn_banjia;
     private ViewPager viewPager;
     private int currentItem; // 当前页面
     private int oldPosition = 0;// 记录上一次点的位置
@@ -46,7 +47,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_host, null);
-        btn_muying = (Button) view.findViewById(R.id.muying);
+        btn_muying = (TextView) view.findViewById(R.id.muying);
         btn_muying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +58,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_zhongdian = (Button) view.findViewById(R.id.zhongdian);
+        btn_zhongdian = (TextView) view.findViewById(R.id.zhongdian);
         btn_zhongdian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +69,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_baomu = (Button) view.findViewById(R.id.baomu);
+        btn_baomu = (TextView) view.findViewById(R.id.baomu);
         btn_baomu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +80,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_kanhu = (Button) view.findViewById(R.id.kanhu);
+        btn_kanhu = (TextView) view.findViewById(R.id.kanhu);
         btn_kanhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +91,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_jiaoyu = (Button) view.findViewById(R.id.jiaoyu);
+        btn_jiaoyu = (TextView) view.findViewById(R.id.jiaoyu);
         btn_jiaoyu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +102,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_qingjie = (Button) view.findViewById(R.id.qingjie);
+        btn_qingjie = (TextView) view.findViewById(R.id.qingjie);
         btn_qingjie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +113,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_weixiu = (Button) view.findViewById(R.id.weixiu);
+        btn_weixiu = (TextView) view.findViewById(R.id.weixiu);
         btn_weixiu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +124,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
-        btn_banjia = (Button) view.findViewById(R.id.banjia);
+        btn_banjia = (TextView) view.findViewById(R.id.banjia);
         btn_banjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

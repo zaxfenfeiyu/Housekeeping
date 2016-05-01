@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/pink">
+    android:background="@color/primary_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red">
+        android:background="@color/title_blue">
 
         <ImageButton
             android:src="@drawable/back"
@@ -72,9 +72,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:textSize="20sp"
-                        android:textColor="@color/red2"
+                        android:textColor="@color/grey"
                         android:id="@+id/text_provider_name"
-                        android:gravity="bottom" />
+                        android:gravity="bottom"
+                        android:text="三圈服务公司" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -89,10 +90,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"
+                    android:textColor="@color/grey"
                     android:id="@+id/text_st_sc"
                     android:layout_weight="1"
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:text="有样学样" />
 
             </LinearLayout>
 
@@ -114,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="合计：￥"
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/textView35"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -124,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/grey"
                     android:id="@+id/text_price"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -151,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text="联系人："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView19"
                 android:layout_marginTop="10dp" />
 
@@ -159,21 +161,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_resident_name"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:text="1986" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联系电话："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView20"
                 android:layout_marginTop="10dp" />
 
@@ -181,21 +185,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_resident_phone"
                 android:layout_marginTop="10dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="服务时间："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView38"
                 android:layout_marginTop="10dp" />
 
@@ -203,21 +208,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_service_time"
                 android:layout_marginTop="10dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="服务地址："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView42"
                 android:layout_marginTop="10dp" />
 
@@ -225,21 +231,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_address"
                 android:layout_marginTop="10dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="下单时间："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView44"
                 android:layout_marginTop="10dp" />
 
@@ -247,21 +254,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_place_time"
                 android:layout_marginTop="10dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="留言："
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/textView29"
                 android:layout_marginTop="10dp" />
 
@@ -269,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/red2"
+                android:textColor="@color/grey"
                 android:id="@+id/text_message"
                 android:layout_marginTop="10dp" />
         </TableRow>
@@ -285,35 +293,40 @@
             android:layout_height="wrap_content"
             android:text="投诉"
             android:textSize="20sp"
-            android:textColor="@color/red"
+            android:textColor="@color/title_blue"
             android:background="@drawable/buton_style"
-            android:id="@+id/btn_complain" />
+            android:id="@+id/btn_complain"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="评价"
             android:textSize="20sp"
-            android:textColor="@color/red"
+            android:textColor="@color/title_blue"
             android:background="@drawable/buton_style"
             android:id="@+id/btn_remark"
-            android:layout_alignParentTop="true"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/btn_complain"
             android:layout_toRightOf="@+id/btn_complain"
             android:layout_toEndOf="@+id/btn_complain"
-            android:visibility="invisible" />
+            android:layout_marginLeft="31dp"
+            android:layout_marginStart="31dp" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="确认订单"
             android:textSize="20sp"
-            android:textColor="@color/red"
+            android:textColor="@color/title_blue"
             android:background="@drawable/buton_style"
             android:id="@+id/btn_confirm"
-            android:layout_alignParentTop="true"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/btn_remark"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:visibility="invisible" />
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 </LinearLayout>
