@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.example.ariel.housekeeping.entity.ProviderEntity;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.RunnableFuture;
 
 /**
  * Created by ariel on 2016/4/26.
@@ -29,6 +31,7 @@ public class ProviderDetailActivity extends Activity {
     private TextView phoneText;
     private TextView rankText;
     private Button submitBtn;
+    private ImageButton collectBtn;
     private String returnRes;
     private String urlPath="http://192.168.2.105:8080/HouseKeeping/placeOrder.action";
    // private String urlPath="http://192.168.134.1:8080/HouseKeeping/placeOrder.action";
@@ -68,6 +71,7 @@ public class ProviderDetailActivity extends Activity {
         phoneText.setText(pe.getPhone());
         rankText.setText(String.valueOf(pe.getRank()));
 
+
         submitBtn=(Button)findViewById(R.id.btn_submit) ;
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +83,7 @@ public class ProviderDetailActivity extends Activity {
                     public void run() {
                         try {
                             Map<String, String> map = new HashMap<String, String>();
-                            map.put("re_id","1");
+                            map.put("re_id",Data.getRe_id());
                             map.put("pro_id",String.valueOf(pe.getId()));
                             map.put("sc_id",String.valueOf(orderDetail.getSc_id()) );
                             map.put("address",orderDetail.getAddress());
@@ -97,5 +101,23 @@ public class ProviderDetailActivity extends Activity {
             }
         });
 
+        collectBtn=(ImageButton)findViewById(R.id.btn_collect); //收藏按钮
+        collectBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                new Thread(new Runnable() {
+                @Override
+                    public void run(){
+                    try{
+                        Map<String,String> map=new HashMap<String, String>();
+
+                    }catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                }).start();
+            }
+        });
     }
 }

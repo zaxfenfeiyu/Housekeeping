@@ -42,7 +42,12 @@ public class LoginActivity  extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    if(result.equals("success")) {
+                    if(result.equals("fail"))
+                    {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this,"登录失败！",Toast.LENGTH_LONG).show();
+                    }
+                    else if(result!=null) {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this,"登录成功！",Toast.LENGTH_LONG).show();
                         //登录成功后将信息添加到本地数据库
@@ -51,6 +56,7 @@ public class LoginActivity  extends Activity {
                         db.execSQL("INSERT INTO resident VALUES (?, ?, ?, ?, ?, ?, ?)",
                                 new Object[]{null,usernameText.getText(), passwordText.getText(),null,null,null,null});
                         //设置全局变量
+                        Data.setRe_id((result));
                         Data.setUsername(usernameText.getText().toString());
                         Data.setIfLogin(true);
                         Intent intent = new Intent();
@@ -58,11 +64,6 @@ public class LoginActivity  extends Activity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
-                    }
-                    else if(result.equals("fail"))
-                    {
-                        progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,"登录失败！",Toast.LENGTH_LONG).show();
                     }
                     else {
                         progressDialog.dismiss();
