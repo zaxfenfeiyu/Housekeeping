@@ -22,11 +22,12 @@ public class WelcomActivity extends AppCompatActivity {
         //查询数据库中的数据以判断用户是否之前登录过了
         DBHelper dbhelper=new DBHelper(WelcomActivity.this);
         SQLiteDatabase db=dbhelper.getWritableDatabase();
-        Cursor cursor=db.query("resident",new String[]{"username"},"id=1",null,null,null,null,null);
+        Cursor cursor=db.query("resident",new String[]{"username","address"},"id=1",null,null,null,null,null);
         if(cursor.moveToFirst())
         if(!cursor.isNull(0)) {
             Data.setIfLogin(true);
             Data.setUsername(cursor.getString(0));
+            Data.setAddress(cursor.getString(1));
         }
 
         PackageManager pm = getPackageManager();

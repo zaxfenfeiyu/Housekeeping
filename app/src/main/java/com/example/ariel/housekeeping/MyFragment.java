@@ -38,6 +38,11 @@ public class MyFragment extends Fragment {
         perfectInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),InformationActivity.class);
                 startActivity(intent);
             }
@@ -56,6 +61,11 @@ public class MyFragment extends Fragment {
         moreSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),MoreSettingActivity.class);
                 startActivity(intent);
             }

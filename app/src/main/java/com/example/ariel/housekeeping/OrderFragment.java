@@ -53,7 +53,11 @@ public class OrderFragment extends Fragment {
         waitTake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 intent.putExtra("title","待接单订单");
                 intent.putExtra("tag","getWaitTakeOrder.action");
@@ -63,7 +67,11 @@ public class OrderFragment extends Fragment {
         waitConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 intent.putExtra("title","待确认订单");
                 intent.putExtra("tag","getWaitConfirmOrder.action");
@@ -73,7 +81,11 @@ public class OrderFragment extends Fragment {
         waitEvaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 intent.putExtra("title","待评价订单");
                 intent.putExtra("tag","getWaitRemarkOrder.action");
@@ -83,7 +95,11 @@ public class OrderFragment extends Fragment {
         completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getActivity(),AllOrderActivity.class);
                 intent.putExtra("title","已完成订单");
                 intent.putExtra("tag","getCompletedOrder.action");

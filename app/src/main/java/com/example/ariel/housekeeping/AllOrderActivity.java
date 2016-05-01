@@ -36,7 +36,8 @@ public class AllOrderActivity extends Activity {
     private int order_id;
     private ProgressDialog progressDialog;
     private AllOrderAdapter aoa;
-    private String urlPath="http://192.168.2.105:8080/HouseKeeping/";
+    //private String urlPath="http://192.168.2.105:8080/HouseKeeping/";
+    private String urlPath="http://192.168.134.1:8080/HouseKeeping/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {

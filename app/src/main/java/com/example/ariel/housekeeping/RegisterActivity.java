@@ -23,7 +23,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText password;
     private EditText repassword;
     private Button submitBtn;
-    private String urlPath = "http://192.168.2.105:8080/HouseKeeping/register.action";
+    private String urlPath = "http://192.168.134.1:8080/HouseKeeping/register.action";
    // private String urlPath = "http://192.168.155.1:8080/HouseKeeping/register.action";
     private String accountStr;
     private String passwordStr;

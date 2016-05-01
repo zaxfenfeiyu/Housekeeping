@@ -2,6 +2,8 @@ package com.example.ariel.housekeeping;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +24,7 @@ import java.util.Map;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+import db.DBHelper;
 
 /**
  * Created by ariel on 2016/4/22.
@@ -41,8 +44,10 @@ public class InformationActivity extends Activity implements View.OnClickListene
     private ImageButton returnBtn;
     private String APPKEY = "11b16f73997aa";
     private String APPSECRETE = "301a2053d8243101c649a8e94ce1f414";
-    private String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/editInfor.action";
-    private String urlPath1 = "http://192.168.2.105:8080/HouseKeeping/getInfor.action";
+    //private String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/editInfor.action";
+   // private String urlPath1 = "http://192.168.2.105:8080/HouseKeeping/getInfor.action";
+    private String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/editInfor.action";
+    private String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getInfor.action";
     private int time = 60;
     private String retrunRes = "";
     private  List<ResidentEntity> relist;
@@ -222,6 +227,14 @@ public class InformationActivity extends Activity implements View.OnClickListene
                     map.put("realName", realNameStr);
                     map.put("phoneNum", phoneNumStr);
                     map.put("address", addressStr);
+                    Data.setAddress(addressStr);
+                    //将address存入本地数据库
+                    DBHelper dbhelper=new DBHelper(InformationActivity.this);
+                    SQLiteDatabase db=dbhelper.getWritableDatabase();
+                    ContentValues cv=new ContentValues();
+                    cv.put("address",addressStr);
+                    db.update("resident",cv,"id=1",null);
+
                     InputStream inptStream = RequestService.postRequest(urlPath2, map);
                     retrunRes = RequestService.dealResponseResult(inptStream);
                     handler.sendEmptyMessage(-10);
@@ -259,7 +272,7 @@ public class InformationActivity extends Activity implements View.OnClickListene
     }
 
     public void getInfor() {
-        account = "123456789";
+        account = Data.getUsername();
         new Thread(new Runnable() {
             @Override
             public void run() {
