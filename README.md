@@ -81,7 +81,10 @@
 实现了订单的确认功能
 
 
+###2016/5/1 by Disagree
 
+增加了全局变量的Id属性
 
+修改了LoginActivity.java中handler判断登录成功后增加全局变量Data的Id属性。
 
-
+修改了启动图片和logo
