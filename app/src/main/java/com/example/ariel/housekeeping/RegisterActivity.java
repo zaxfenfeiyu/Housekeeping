@@ -23,7 +23,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText password;
     private EditText repassword;
     private Button submitBtn;
-    private String urlPath = "http://192.168.2.105:8080/HouseKeeping/register.action";
+    private String urlPath = "http://192.168.134.50:8080/HouseKeeping/register.action";
    // private String urlPath = "http://192.168.155.1:8080/HouseKeeping/register.action";
     private String accountStr;
     private String passwordStr;
@@ -68,6 +68,9 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 }
                 else if (retrunRes.equals("failed")) {
                     Toast.makeText(getApplicationContext(), "服务器错误", Toast.LENGTH_SHORT).show();
+                }
+                else if(retrunRes.equals("notExisted")){
+                    Toast.makeText(getApplicationContext(), "该登记号不存在", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "连接服务器错误", Toast.LENGTH_SHORT).show();

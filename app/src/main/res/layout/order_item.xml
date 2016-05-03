@@ -30,8 +30,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
-                        android:textColor="@color/red2"
-                        android:id="@+id/text_provider_name" />
+                        android:textColor="@color/dark_grey"
+                        android:id="@+id/text_provider_name"
+                        android:text="大全家政服务公司" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -46,10 +47,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"
+                    android:textColor="@color/dark_grey"
                     android:id="@+id/text_st_sc"
                     android:layout_weight="1"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:text="母婴护理" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -57,7 +59,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:layout_marginTop="0dp"
             android:layout_margin="10dp">
 
@@ -65,15 +66,34 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red2"
+                android:text="下单时间："
+                android:textColor="@color/dark_grey"
+                android:id="@+id/textView25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_time"
+                android:text="12345687"
+                android:textColor="@color/dark_grey"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textView25"
+                android:layout_toEndOf="@+id/textView25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_grey"
                 android:id="@+id/text_order_state"
-                android:background="@drawable/buton_style"
                 android:textSize="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="32dp"
-                android:layout_marginEnd="32dp" />
+                android:layout_marginEnd="32dp"
+                android:text="未接单" />
         </RelativeLayout>
+
     </LinearLayout>
+
 </LinearLayout>

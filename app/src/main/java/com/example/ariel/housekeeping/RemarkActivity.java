@@ -32,7 +32,7 @@ public class RemarkActivity extends Activity {
     private float rank = 0;
     private String result;
     //private String urlPath = "http://115.200.19.98:8080/HouseKeeping/remarkOrder.action";
-    private String urlPath = "http://192.168.2.105:8080/HouseKeeping/remarkOrder.action";
+    private String urlPath = "http://192.168.134.50:8080/HouseKeeping/remarkOrder.action";
     ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {

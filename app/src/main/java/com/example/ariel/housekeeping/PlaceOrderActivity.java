@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     Button AddressBtn;
     Button MessageBtn;
     Button SubmitBtn;
+    private ImageButton returnBtn;
     EditText et;
     String chooseType;
     String time;
@@ -51,8 +53,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     double price;
 //    String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
 //    String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/getSCProviders.action";
-    String urlPath1 = "http://192.168.2.105:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://192.168.134.50:8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://192.168.134.50:8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;
@@ -111,6 +113,15 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
         SubmitBtn.setOnClickListener(this);
         DateBtn = (Button) findViewById(R.id.btn_date);
         DateBtn.setOnClickListener(this);
+
+        //监听返回键
+        returnBtn = (ImageButton) findViewById(R.id.btn_place_return);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void onClick(View v) {
@@ -210,6 +221,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                             try {
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("sc_id", String.valueOf(scID));
+                                map.put("re_account", Data.getUsername());
                                 od = new OrderDetail(scID, address, date+" "+time, message,price);
                                 InputStream inputStream = RequestService.postRequest(urlPath2, map);
                                 String str = RequestService.dealResponseResult(inputStream);

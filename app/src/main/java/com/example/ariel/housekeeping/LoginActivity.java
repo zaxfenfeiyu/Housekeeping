@@ -10,6 +10,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.ariel.housekeeping.entity.ResidentEntity;
@@ -31,8 +32,8 @@ import db.DBHelper;
  * Created by ariel on 2016/4/14.
  */
 public class LoginActivity  extends Activity {
-    private static String urlPath="http://192.168.2.105:8080/HouseKeeping/login.action";
-   //private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
+    //private static String urlPath="http://192.168.2.105:8080/HouseKeeping/login.action";
+   private static String urlPath="http://192.168.134.50:8080/HouseKeeping/login.action";
 
     private String NetResult="";
     private List<ResidentEntity> list;
@@ -40,6 +41,7 @@ public class LoginActivity  extends Activity {
     private EditText passwordText;
     private Button LoginBtn;
     private Button registerBtn;
+    private ImageButton returnBtn;
     private  String result="test";
     private ProgressDialog progressDialog;
     private Handler handler2 = new Handler() {
@@ -92,6 +94,14 @@ public class LoginActivity  extends Activity {
             public void onClick(View v) {
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+        //监听返回键
+        returnBtn = (ImageButton) findViewById(R.id.btn_login_return);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

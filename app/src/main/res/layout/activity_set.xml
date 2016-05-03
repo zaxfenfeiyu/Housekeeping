@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:text="退出当前账号"
             android:id="@+id/btn_logout"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_exist"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_alignParentBottom="true"

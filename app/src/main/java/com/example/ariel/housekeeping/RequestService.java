@@ -197,7 +197,7 @@ public class RequestService {
         int length = array.length();
         for (int i = 0; i < length; i++) {
             JSONObject object = array.getJSONObject(i);
-            totalOrder = new TotalOrder(object.getInt("id"), object.getString("pro_name"), object.getString("st_sc_name"), object.getString("state"));
+            totalOrder = new TotalOrder(object.getInt("id"), object.getString("pro_name"), object.getString("st_sc_name"), object.getString("state"),object.getString("time"));
             list.add(totalOrder);
         }
         return list;

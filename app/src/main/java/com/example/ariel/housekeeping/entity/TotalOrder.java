@@ -6,19 +6,27 @@ public class TotalOrder {
 	private String pro_name;
 	private String st_sc_name;
 	private String state;
+	private String time;
 	
 	
 	public TotalOrder() {
 	}
 
-
-	public TotalOrder(int id, String pro_name, String st_sc_name, String state) {
+	public TotalOrder(int id, String pro_name, String st_sc_name, String state, String time) {
 		this.id = id;
 		this.pro_name = pro_name;
 		this.st_sc_name = st_sc_name;
 		this.state = state;
+		this.time = time;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public int getId() {
 		return id;

@@ -27,16 +27,28 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:gravity="center_vertical"
-                android:textColor="#ffffff" />
+                android:textColor="@color/dark_grey" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="评分："
-                android:id="@+id/providerRank"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:gravity="center_vertical" />
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="评分："
+                    android:id="@+id/textView26"
+                    android:textSize="15sp"
+                    android:textColor="@color/dark_grey"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/providerRank"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/dark_grey"/>
+            </TableRow>
 
         </LinearLayout>
 

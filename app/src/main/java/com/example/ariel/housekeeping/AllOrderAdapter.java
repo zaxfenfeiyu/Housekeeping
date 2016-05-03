@@ -21,6 +21,7 @@ public class AllOrderAdapter extends BaseAdapter {
     private TextView nameText;
     private TextView stscText;
     private TextView stateText;
+    private TextView timeText;
     public AllOrderAdapter(Context c, List<TotalOrder> list) {
         this.list=list;
         inflater = LayoutInflater.from(c) ;
@@ -48,9 +49,11 @@ public class AllOrderAdapter extends BaseAdapter {
         nameText=(TextView)convertView.findViewById(R.id.text_provider_name);
         stscText=(TextView)convertView.findViewById(R.id.text_st_sc);
         stateText=(TextView)convertView.findViewById(R.id.text_order_state);
+        timeText=(TextView)convertView.findViewById(R.id.text_time) ;
         nameText.setText(to.getPro_name());
         stscText.setText(to.getSt_sc_name());
         stateText.setText(to.getState());
+        timeText.setText(to.getTime());
         return convertView;
     }
 }
