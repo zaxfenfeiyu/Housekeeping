@@ -64,24 +64,21 @@
             android:drawableTop="@drawable/tvclean"
             android:text="清洁"
             android:id="@+id/qingjie" />
-
-        <TextView
-            style="@style/top_essential_style"
-            android:drawableTop="@drawable/tvjiajiao"
-            android:text="家庭教育"
-            android:id="@+id/jiaoyu" />
-
-        <TextView
-            style="@style/top_essential_style"
-            android:drawableTop="@drawable/tvbanjia"
-            android:text="搬家"
-            android:id="@+id/banjia" />
-
         <TextView
             style="@style/top_essential_style"
             android:drawableTop="@drawable/tvweixiu"
             android:text="维修"
             android:id="@+id/weixiu" />
+        <TextView
+            style="@style/top_essential_style"
+            android:drawableTop="@drawable/tvbanjia"
+            android:text="搬家"
+            android:id="@+id/banjia" />
+        <TextView
+            style="@style/top_essential_style"
+            android:drawableTop="@drawable/tvmuying"
+            android:text="母婴护理"
+            android:id="@+id/muying" />
     </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"
@@ -92,26 +89,35 @@
             style="@style/top_essential_style"
             android:drawableTop="@drawable/tvtime"
             android:text="钟点工"
-            android:id="@+id/zhongdian" />
+            android:id="@+id/zhongdian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
             style="@style/top_essential_style"
             android:drawableTop="@drawable/tvbaomu"
             android:text="保姆"
-            android:id="@+id/baomu" />
+            android:id="@+id/baomu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
             style="@style/top_essential_style"
             android:drawableTop="@drawable/tvhuli"
             android:text="看护护理"
             android:id="@+id/kanhu" />
-
         <TextView
             style="@style/top_essential_style"
-            android:drawableTop="@drawable/tvmuying"
-            android:text="母婴护理"
-            android:id="@+id/muying" />
+            android:drawableTop="@drawable/tvjiajiao"
+            android:text="家庭教育"
+            android:id="@+id/jiaoyu" />
 
     </LinearLayout>
-
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -204,6 +210,6 @@
             android:background="@drawable/button_main"
             android:textSize="22sp" />
     </LinearLayout>
-
-
+</LinearLayout>
+</ScrollView>
 </LinearLayout>

@@ -53,8 +53,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     double price;
 //    String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
 //    String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/getSCProviders.action";
-    String urlPath1 = "http://192.168.134.50:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://192.168.134.50:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://192.168.2.105:8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;
@@ -182,6 +182,8 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
             case R.id.btn_address:
                 et = new EditText(this);
                 et.setBackgroundResource(R.drawable.edit_shape);
+
+                et.setText(Data.getAddress());
                 new AlertDialog.Builder(this).setTitle("填写地址")
                         .setView(et)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -215,6 +217,11 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                 break;
             case R.id.btn_submit:
                 if (validate()) {
+                    if(Data.getIfLogin()==false)
+                    {
+                        Toast.makeText(this,"请先登录！",Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
