@@ -44,7 +44,7 @@ public class OrderDetailActivity extends Activity {
     //private String urlPath = "http://192.168.2.105:8080/HouseKeeping/orderDetail.action";
     private String urlPath2 = "http://192.168.134.50:8080/HouseKeeping/confirmOrder.action";
     //private String urlPath2 = "http://192.168.2.105:8080/HouseKeeping/confirmOrder.action";
-
+//
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
