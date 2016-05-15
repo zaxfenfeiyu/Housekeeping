@@ -50,7 +50,7 @@ public class MainActivity extends FragmentActivity {
              R.drawable.order2,
             R.drawable.my2};
     /**
-     * 选修卡文字
+     * 选项卡文字
      */
     private String mTextArray[] = {"首页", "订单", "我"};
 

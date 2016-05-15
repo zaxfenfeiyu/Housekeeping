@@ -27,6 +27,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
     private TextView btn_weixiu;
     private TextView btn_banjia;
     private ViewPager viewPager;
+    private LinearLayout vipLayout;
     private int currentItem; // 当前页面
     private int oldPosition = 0;// 记录上一次点的位置
     /**
@@ -135,6 +136,17 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
+
+        vipLayout=(LinearLayout)view.findViewById(R.id.vipService);
+        vipLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent=new Intent(getActivity(),PlaceVIPOrderActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ViewGroup group = (ViewGroup) view.findViewById(R.id.viewGroup);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         //载入图片资源ID

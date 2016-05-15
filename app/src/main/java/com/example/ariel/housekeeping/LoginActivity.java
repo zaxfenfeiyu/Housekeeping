@@ -32,7 +32,7 @@ import db.DBHelper;
  * Created by ariel on 2016/4/14.
  */
 public class LoginActivity  extends Activity {
-    private static String urlPath="http://192.168.2.105:8080/HouseKeeping/login.action";
+    private static String urlPath="http://192.168.22.1:8080/HouseKeeping/login.action";
    //private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
 
     private String NetResult="";
@@ -61,7 +61,7 @@ public class LoginActivity  extends Activity {
                         DBHelper dbhelper=new DBHelper(LoginActivity.this);
                         SQLiteDatabase db=dbhelper.getWritableDatabase();
                         db.execSQL("INSERT INTO resident VALUES (?, ?, ?, ?, ?, ?, ?)",
-                                new Object[]{null,usernameText.getText(), passwordText.getText(),residentEntity.getRealname(),residentEntity.getAddress(),null,residentEntity.getPhone()});
+                                new Object[]{residentEntity.getId(),usernameText.getText(), passwordText.getText(),residentEntity.getRealname(),residentEntity.getAddress(),null,residentEntity.getPhone()});
                         //设置全局变量
                         Data.setRe_id(String.valueOf(residentEntity.getId()));
                         Data.setUsername(usernameText.getText().toString());

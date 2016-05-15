@@ -18,7 +18,7 @@
     <color name="title_blue">#20adff</color>
     <color name="primary_background">#e7f5fd</color>
     <color name="dark_blue">#003656</color>
-    <color name="qing">#42b773</color>
-    <color name="lightqing">#a3e6bf</color>
+    <color name="green">#42b773</color>
+    <color name="light_green">#a3e6bf</color>
     <color name="dark_grey">#4c4e4d</color>
 </resources>
