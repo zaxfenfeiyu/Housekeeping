@@ -12,7 +12,8 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/picture" />
+            android:id="@+id/picture"
+            android:src="@drawable/pic2" />
 
         <LinearLayout
             android:orientation="vertical"

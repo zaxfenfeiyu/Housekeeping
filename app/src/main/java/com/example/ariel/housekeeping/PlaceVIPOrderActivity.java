@@ -32,7 +32,8 @@ import java.util.List;
 import java.util.Map;
 
 public class PlaceVIPOrderActivity extends Activity implements View.OnClickListener{
-    String urlPath = "http://192.168.22.1:8080/HouseKeeping/getSCProviders.action";
+    String urlPath = "http://192.168.225.50:8080/HouseKeeping/getSCProviders.action";
+   // String urlPath = "http://192.168.22.1:8080/HouseKeeping/getSCProviders.action";
     AlertDialog.Builder builder;
     Button SubVIPService;
     Button TimeBtn;

@@ -36,7 +36,7 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
         <activity android:name=".WelcomActivity">
             <intent-filter>
@@ -62,7 +62,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".PlaceVIPOrderActivity"></activity>
+        <activity android:name=".PlaceVIPOrderActivity" />
+        <activity android:name=".RecommendActivity" />
+        <activity android:name=".RecProviderDetailActivity" />
+        <activity android:name=".SecondKill"></activity>
     </application>
 
 </manifest>

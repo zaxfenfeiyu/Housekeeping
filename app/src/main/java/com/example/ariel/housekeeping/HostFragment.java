@@ -28,6 +28,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
     private TextView btn_banjia;
     private ViewPager viewPager;
     private LinearLayout vipLayout;
+    private Button btn_recommend;
     private int currentItem; // 当前页面
     private int oldPosition = 0;// 记录上一次点的位置
     /**
@@ -143,6 +144,15 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
             public void onClick(View v)
             {
                 Intent intent=new Intent(getActivity(),PlaceVIPOrderActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_recommend=(Button)view.findViewById(R.id.btn_recommend);
+        btn_recommend.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent=new Intent(getActivity(),RecommendActivity.class);
                 startActivity(intent);
             }
         });

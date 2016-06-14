@@ -146,10 +146,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="精选人才，为您服务"
+                android:text="自定需求，为您服务"
                 android:gravity="left"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 />
             <ImageView
                 android:layout_width="60dp"
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="优惠套餐"
+                android:text="秒杀活动"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 />
@@ -182,10 +182,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="精选套餐，优惠满满"
+                android:text="免费家政，等您来抢"
                 android:gravity="left"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 />
             <ImageView
                 android:layout_width="30dp"
@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:text="金牌服务商推荐"
             android:textColor="@color/white"
-            android:id="@+id/button10"
+            android:id="@+id/btn_recommend"
             android:background="@drawable/button_main"
             android:textSize="22sp" />
     </LinearLayout>

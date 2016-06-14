@@ -87,8 +87,7 @@ public class RequestService {
         return stringBuffer;
     }
 
-    public static List<ProviderEntity> getJSONData(String urlPath) throws Exception {
-        List<ProviderEntity> list = new ArrayList<ProviderEntity>();
+    public static InputStream getJSONData(String urlPath) throws Exception {
         URL url = new URL(urlPath);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setConnectTimeout(3000);        //设置连接超时时间
@@ -97,10 +96,11 @@ public class RequestService {
         Log.e("conn", "conn=" + response);
         if (response == 200) {
             InputStream in = conn.getInputStream();
-            String str = dealResponseResult(in);
+           return in;
         }
-        return list;
-
+        else{
+            return null;
+        }
     }
 
     /**
@@ -117,7 +117,7 @@ public class RequestService {
         int length = array.length();
         for (int i = 0; i < length; i++) {
             JSONObject object = array.getJSONObject(i);
-            providerEntity = new ProviderEntity(object.getInt("id"), object.getString("name"), object.getInt("rank"), object.getString("phone"), object.getString("introduction"), object.getString("picturepath"));
+            providerEntity = new ProviderEntity(object.getInt("id"), object.getString("name"), object.getDouble("rank"), object.getString("phone"), object.getString("introduction"),object.getString("service"), object.getString("picturepath"));
             list.add(providerEntity);
         }
         return list;

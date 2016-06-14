@@ -11,18 +11,28 @@ public class ProviderEntity implements Serializable {
     private double rank;
     private String phone;
     private String introduction;
+    private String service;
     private String picturepath;
 
     public ProviderEntity() {
     }
 
-    public ProviderEntity(int id, String name, double rank, String phone, String introduction, String picturepath) {
+    public ProviderEntity(int id, String name, double rank, String phone, String introduction, String service, String picturepath) {
         this.id = id;
         this.name = name;
         this.rank = rank;
         this.phone = phone;
         this.introduction = introduction;
+        this.service = service;
         this.picturepath = picturepath;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
     }
 
     public int getId() {
