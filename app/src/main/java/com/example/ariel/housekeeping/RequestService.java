@@ -4,11 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.example.ariel.housekeeping.entity.OrderDetail2;
-import com.example.ariel.housekeeping.entity.ProviderEntity;
-import com.example.ariel.housekeeping.entity.ResidentEntity;
-import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
-import com.example.ariel.housekeeping.entity.TotalOrder;
+import com.example.ariel.housekeeping.entity.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +16,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -160,6 +158,27 @@ public class RequestService {
             JSONObject object = array.getJSONObject(i);
             servicecatalogEntity = new ServicecatalogEntity(object.getInt("id"), object.getString("name"), object.getDouble("price"));
             list.add(servicecatalogEntity);
+        }
+        return list;
+    }
+
+    /**
+     * 获取秒杀信息
+     * @param str
+     * @return
+     * @throws Exception
+     */
+    public static List<SecondKillEntity> secondKillJSON(String str) throws Exception {
+        List<SecondKillEntity> list = new ArrayList<SecondKillEntity>();
+        SecondKillEntity SecondKillEntity = null;
+        JSONArray array = new JSONArray(str);
+        int length = array.length();
+        for (int i = 0; i < length; i++) {
+            JSONObject object = array.getJSONObject(i);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date=sdf.parse(object.getString("time"));
+            SecondKillEntity = new SecondKillEntity(object.getInt("id"),object.getInt("sc_id"),object.getInt("pro_id"), object.getString("name"), object.getInt("num"),date);
+            list.add(SecondKillEntity);
         }
         return list;
     }
