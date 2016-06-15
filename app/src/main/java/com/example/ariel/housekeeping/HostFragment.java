@@ -28,6 +28,7 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
     private TextView btn_banjia;
     private ViewPager viewPager;
     private LinearLayout vipLayout;
+    private LinearLayout SecondKillLayout;
     private Button btn_recommend;
     private int currentItem; // 当前页面
     private int oldPosition = 0;// 记录上一次点的位置
@@ -147,6 +148,17 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
                 startActivity(intent);
             }
         });
+
+        SecondKillLayout=(LinearLayout)view.findViewById(R.id.SecondKill);
+        SecondKillLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent=new Intent(getActivity(),SecondKill.class);
+                startActivity(intent);
+            }
+        });
+
         btn_recommend=(Button)view.findViewById(R.id.btn_recommend);
         btn_recommend.setOnClickListener(new View.OnClickListener(){
             @Override
