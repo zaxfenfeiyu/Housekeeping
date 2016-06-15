@@ -97,7 +97,7 @@ public class ResidentCollectionActivity  extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             ProviderEntity pe=(ProviderEntity)parent.getItemAtPosition(position);
-            Intent intent=new Intent(ResidentCollectionActivity.this,ProviderDetailActivity.class);
+            Intent intent=new Intent(ResidentCollectionActivity.this,RecProviderDetailActivity.class);
             intent.putExtra("provider",pe);
             startActivity(intent);
         }

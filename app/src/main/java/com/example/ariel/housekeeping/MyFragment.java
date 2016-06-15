@@ -111,8 +111,21 @@ public class MyFragment extends Fragment {
             }
         });
 
+        Button adviceBtn=(Button) view.findViewById(R.id.btn_advice);
+        adviceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Data.getIfLogin() == false) {
+                    Toast.makeText(getContext(), "请先登录！", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent intent = new Intent(getActivity(), AdviceActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
+
 
 
 

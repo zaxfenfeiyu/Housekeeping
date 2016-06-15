@@ -171,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="意见反馈"
-                android:id="@+id/button7"
+                android:id="@+id/btn_advice"
                 android:background="@color/transparent"
                 android:textColor="@color/title_blue"
                 android:textSize="20sp"

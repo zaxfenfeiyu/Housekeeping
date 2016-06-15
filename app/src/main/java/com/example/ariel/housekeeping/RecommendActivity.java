@@ -93,4 +93,6 @@ public class RecommendActivity extends Activity {
             startActivity(intent);
         }
     };
+
+
 }

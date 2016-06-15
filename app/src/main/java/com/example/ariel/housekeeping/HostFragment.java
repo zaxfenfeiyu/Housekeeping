@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by ariel on 2016/4/14.
@@ -53,88 +54,144 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
         btn_muying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("type", btn_muying.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", btn_muying.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
         btn_zhongdian = (TextView) view.findViewById(R.id.zhongdian);
         btn_zhongdian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("type", btn_zhongdian.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", btn_zhongdian.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
         btn_baomu = (TextView) view.findViewById(R.id.baomu);
         btn_baomu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("type", btn_baomu.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", btn_baomu.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
         btn_kanhu = (TextView) view.findViewById(R.id.kanhu);
         btn_kanhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("type", btn_kanhu.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", btn_kanhu.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
         btn_jiaoyu = (TextView) view.findViewById(R.id.jiaoyu);
         btn_jiaoyu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
                 Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("type", btn_jiaoyu.getText().toString());
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
         btn_qingjie = (TextView) view.findViewById(R.id.qingjie);
         btn_qingjie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("type", btn_qingjie.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", btn_qingjie.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
         btn_weixiu = (TextView) view.findViewById(R.id.weixiu);
         btn_weixiu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
                 Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("type", btn_weixiu.getText().toString());
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
         btn_banjia = (TextView) view.findViewById(R.id.banjia);
         btn_banjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
                 Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("type", btn_banjia.getText().toString());
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
 
@@ -143,8 +200,15 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
             @Override
             public void onClick(View v)
             {
-                Intent intent=new Intent(getActivity(),PlaceVIPOrderActivity.class);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), PlaceVIPOrderActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -153,8 +217,15 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
             @Override
             public void onClick(View v)
             {
-                Intent intent=new Intent(getActivity(),SecondKillActivity.class);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), SecondKillActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -163,8 +234,15 @@ public class HostFragment extends Fragment implements ViewPager.OnPageChangeList
             @Override
             public void onClick(View v)
             {
-                Intent intent=new Intent(getActivity(),RecommendActivity.class);
-                startActivity(intent);
+                if(Data.getIfLogin()==false)
+                {
+                    Toast.makeText(getContext(),"请先登录！",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), RecommendActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

@@ -25,7 +25,10 @@ import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
 
 import java.io.InputStream;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -217,11 +220,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                 break;
             case R.id.btn_submit:
                 if (validate()) {
-                    if(Data.getIfLogin()==false)
-                    {
-                        Toast.makeText(this,"请先登录！",Toast.LENGTH_LONG).show();
-                        return;
-                    }
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -250,6 +249,15 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
         time = TimeBtn.getText().toString().trim();
         address = AddressBtn.getText().toString().trim();
         message = MessageBtn.getText().toString().trim();
+        Date date1=new Date();
+        Date ServiceDate=new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            ServiceDate = format.parse(date +" "+ time);
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+
         if (chooseType.equals("请选择子分类")) {
             Toast.makeText(getApplicationContext(), "请选择子类", Toast.LENGTH_LONG).show();
             return false;
@@ -262,7 +270,11 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
         } else if (address.equals("请输入服务地址")) {
             Toast.makeText(getApplicationContext(), "请输入服务地址", Toast.LENGTH_LONG).show();
             return false;
-        } else {
+        }
+        else if(ServiceDate.getTime()<date1.getTime()){
+            Toast.makeText(getApplicationContext(), "服务时间不能早于现在的时间！", Toast.LENGTH_LONG).show();
+            return false;
+        }else {
             return true;
         }
     }

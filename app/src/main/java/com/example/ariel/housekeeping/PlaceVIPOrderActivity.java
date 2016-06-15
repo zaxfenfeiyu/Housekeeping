@@ -26,7 +26,10 @@ import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -261,6 +264,14 @@ public class PlaceVIPOrderActivity extends Activity implements View.OnClickListe
         time = TimeBtn.getText().toString().trim();
         address = AddressBtn.getText().toString().trim();
         message = MessageBtn.getText().toString().trim();
+        Date date1=new Date();
+        Date ServiceDate=new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            ServiceDate = format.parse(date +" "+ time);
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
         if (VIPService.equals("请输入自定义服务描述")) {
             Toast.makeText(getApplicationContext(), "请输入自定义服务描述", Toast.LENGTH_LONG).show();
             return false;
@@ -273,7 +284,10 @@ public class PlaceVIPOrderActivity extends Activity implements View.OnClickListe
         } else if (address.equals("请输入服务地址")) {
             Toast.makeText(getApplicationContext(), "请输入服务地址", Toast.LENGTH_LONG).show();
             return false;
-        } else {
+        } else if(ServiceDate.getTime()<date1.getTime()){
+            Toast.makeText(getApplicationContext(), "服务时间不能早于现在的时间！", Toast.LENGTH_LONG).show();
+            return false;
+        }else {
             return true;
         }
     }

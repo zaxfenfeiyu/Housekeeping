@@ -58,7 +58,7 @@ public class ProviderDetailActivity extends Activity {
                         Toast.makeText(getApplicationContext(), "收藏成功!", Toast.LENGTH_SHORT).show();
                     }
                     else if(returnRes.equals("exist"))
-                        Toast.makeText(getApplicationContext(), "您已经收藏了该服务商!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "成功取消收藏!", Toast.LENGTH_SHORT).show();
                     else
                         Toast.makeText(getApplicationContext(), "服务器错误!", Toast.LENGTH_SHORT).show();
                     break;
