@@ -1,7 +1,10 @@
 package com.example.ariel.housekeeping;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +12,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ariel.housekeeping.entity.OrderDetail;
+import com.example.ariel.housekeeping.entity.ProviderEntity;
+import com.example.ariel.housekeeping.entity.ServicecatalogEntity;
+
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ariel on 2016/4/14.
@@ -18,6 +31,9 @@ public class MyFragment extends Fragment {
     private Button perfectInformation;
 //    private Button  myCollection;
     private Button moreSetting;
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,8 +96,25 @@ public class MyFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        Button CollectBtn=(Button)view.findViewById(R.id.btn_my_collection);
+        CollectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Data.getIfLogin() == false) {
+                    Toast.makeText(getContext(), "请先登录！", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent intent = new Intent(getActivity(), ResidentCollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
+
+
 
 }
 

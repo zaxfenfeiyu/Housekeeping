@@ -11,6 +11,7 @@ public class Data {
     private static Boolean ifLogin=false;
     private static String username="";
     private static String address="";
+    public static String ip="192.168.225.1";
 
     public static Boolean getIfLogin() {
         return ifLogin;

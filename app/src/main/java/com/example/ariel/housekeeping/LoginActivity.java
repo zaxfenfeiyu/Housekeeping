@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,8 +33,8 @@ import db.DBHelper;
  * Created by ariel on 2016/4/14.
  */
 public class LoginActivity  extends Activity {
-   // private static String urlPath="http://192.168.22.1:8080/HouseKeeping/login.action";
-   private static String urlPath="http://192.168.225.50:8080/HouseKeeping/login.action";
+    private static String urlPath="http://"+Data.ip+":8080/HouseKeeping/login.action";
+   //private static String urlPath="http://192.168.134.1:8080/HouseKeeping/login.action";
 
     private String NetResult="";
     private List<ResidentEntity> list;

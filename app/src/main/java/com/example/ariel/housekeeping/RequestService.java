@@ -58,6 +58,7 @@ public class RequestService {
         String resultData = null;      //存储处理结果
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byte[] data = new byte[1024];
+
         int len = 0;
         try {
             while ((len = inputStream.read(data)) != -1) {

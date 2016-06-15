@@ -51,10 +51,10 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
     String message;
     int scID;
     double price;
-    String urlPath1 = "http://192.168.225.50:8080/HouseKeeping/getSCbyST.action";
-    String urlPath2 = "http://192.168.225.50:8080/HouseKeeping/getSCProviders.action";
-   // String urlPath1 = "http://192.168.22.1:8080/HouseKeeping/getSCbyST.action";
-   // String urlPath2 = "http://192.168.22.1:8080/HouseKeeping/getSCProviders.action";
+//    String urlPath1 = "http://192.168.134.1:8080/HouseKeeping/getSCbyST.action";
+//    String urlPath2 = "http://192.168.134.1:8080/HouseKeeping/getSCProviders.action";
+    String urlPath1 = "http://"+Data.ip+":8080/HouseKeeping/getSCbyST.action";
+    String urlPath2 = "http://"+Data.ip+":8080/HouseKeeping/getSCProviders.action";
     ServicecatalogAdapter scAdapter;
     private Calendar calendar;
     private List<ServicecatalogEntity> sclist;
@@ -136,7 +136,7 @@ public class PlaceOrderActivity extends Activity implements View.OnClickListener
                         try {
                             Map<String, String> map = new HashMap<String, String>();
                             map.put("st_name", title.getText().toString());
-                            InputStream inputStream = RequestService.postRequest(urlPath1, map);
+                            InputStream inputStream = RequestService.postRequest(urlPath1,map);
                             String str = RequestService.dealResponseResult(inputStream);
                             sclist = RequestService.servicecatalogJSON(str);
                             handler.sendEmptyMessage(0);

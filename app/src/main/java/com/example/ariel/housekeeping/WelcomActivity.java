@@ -35,7 +35,7 @@ public class WelcomActivity extends AppCompatActivity {
         try {
             PackageInfo pi = pm.getPackageInfo("com.example.ariel.housekeeping", 0);
             TextView versionNumber = (TextView) findViewById(R.id.versionNumber);
-            versionNumber.setText("Version " + pi.versionName);
+            versionNumber.setText("Version "+pi.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

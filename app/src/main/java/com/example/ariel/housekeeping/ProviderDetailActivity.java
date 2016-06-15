@@ -33,8 +33,9 @@ public class ProviderDetailActivity extends Activity {
     private Button submitBtn;
     private ImageButton collectBtn;
     private String returnRes;
-   // private String urlPath="http://192.168.22.1:8080/HouseKeeping/placeOrder.action";
-    private String urlPath="http://192.168.225.50:8080/HouseKeeping/placeOrder.action";
+    private String urlPath="http://"+"192.168.225.1"+":8080/HouseKeeping/placeOrder.action";
+    private String urlPath2="http://"+Data.ip+":8080/HouseKeeping/collectProvider.action";
+   // private String urlPath="http://192.168.134.1:8080/HouseKeeping/placeOrder.action";
     private ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -50,6 +51,16 @@ public class ProviderDetailActivity extends Activity {
                     else{
                         Toast.makeText(getApplicationContext(), "服务器错误!", Toast.LENGTH_SHORT).show();
                     }
+                    break;
+                case 1:
+                    progressDialog.dismiss();
+                    if(returnRes.equals("succeed")) {
+                        Toast.makeText(getApplicationContext(), "收藏成功!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(returnRes.equals("exist"))
+                        Toast.makeText(getApplicationContext(), "您已经收藏了该服务商!", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getApplicationContext(), "服务器错误!", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -105,12 +116,18 @@ public class ProviderDetailActivity extends Activity {
         collectBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                progressDialog = ProgressDialog.show(ProviderDetailActivity.this,"","正在收藏，请稍后");
+                progressDialog.setCancelable(true);
                 new Thread(new Runnable() {
                 @Override
                     public void run(){
                     try{
                         Map<String,String> map=new HashMap<String, String>();
-
+                        map.put("re_id",Data.getRe_id());
+                        map.put("pro_id",String.valueOf(pe.getId()));
+                        InputStream inputStream = RequestService.postRequest(urlPath2, map);
+                        returnRes = RequestService.dealResponseResult(inputStream);
+                        handler.sendEmptyMessage(1);
                     }catch(Exception e)
                     {
                         e.printStackTrace();

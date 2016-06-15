@@ -65,7 +65,8 @@
         <activity android:name=".PlaceVIPOrderActivity" />
         <activity android:name=".RecommendActivity" />
         <activity android:name=".RecProviderDetailActivity" />
-        <activity android:name=".SecondKill"></activity>
+        <activity android:name=".SecondKill" />
+        <activity android:name=".ResidentCollectionActivity"></activity>
     </application>
 
 </manifest>

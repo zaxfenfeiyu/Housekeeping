@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/picture"
+            android:src="@drawable/pic2" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/providerName"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/dark_grey" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="评分："
+
+                    android:id="@+id/textView26"
+                    android:textSize="15sp"
+                    android:textColor="@color/dark_grey"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/providerRank"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+
+                    android:textColor="@color/dark_grey"/>
+
+
+            </TableRow>
+
+
+            <Button
+                android:id="@+id/CancelCollection"
+
+                android:text="取消收藏"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

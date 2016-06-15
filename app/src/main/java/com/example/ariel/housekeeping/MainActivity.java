@@ -25,7 +25,7 @@ public class MainActivity extends FragmentActivity {
     private LayoutInflater mLayoutInflater;
     private static boolean isExit = false;
     private List<ProviderEntity> providerEntities;
-    private String urlPath = "http://192.168.134.50:8080/HouseKeeping/getAll.action";
+    private String urlPath = "http://"+Data.ip+":8080/HouseKeeping/getAll.action";
     //private String urlPath = "http://192.168.134.1:8080/HouseKeeping/getAll.action";
 
     private Handler handler = new Handler() {

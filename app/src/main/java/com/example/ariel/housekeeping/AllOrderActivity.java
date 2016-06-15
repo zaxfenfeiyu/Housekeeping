@@ -36,7 +36,7 @@ public class AllOrderActivity extends Activity {
     private int order_id;
     private ProgressDialog progressDialog;
     private AllOrderAdapter aoa;
-    private String urlPath="http://192.168.225.50:8080/HouseKeeping/";
+    private String urlPath="http://"+Data.ip+":8080/HouseKeeping/";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -49,6 +49,7 @@ public class AllOrderActivity extends Activity {
                         listView.setAdapter(aoa);
                         listView.setOnItemClickListener(itemListener);
                     }
+
                     break;
 
                 case -1:
